@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "399080079821",
+    "project_id": "sagar-jewellers-81c8f",
+    "storage_bucket": "sagar-jewellers-81c8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399080079821:android:e85ac6cab69785c2728484",
+        "android_client_info": {
+          "package_name": "com.asterix.sagar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApJMVw9mB9ahWSFxI9AYYdb20LZWAibrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

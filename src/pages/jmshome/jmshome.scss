@@ -1,0 +1,470 @@
+// page-jmshome {
+//     // ion-card{
+//     //     height: 180px;
+//     //     width: 100%;
+//     // }
+// }
+
+
+
+// .card-class-home {
+//     font-size: 0.8rem;
+//     line-height: 1.5;
+//     margin:0px;
+// 	box-shadow:none;	
+// 	border-radius: 10px;
+//     margin-top: 1px;
+//     margin-bottom: 1px;
+//     margin-left: 10px;
+//     margin-right: 10px;
+//     height: 124px;
+//     width: 146px;
+  
+//}
+
+
+// .card-class-full {
+//     font-size: 1.6rem;
+//     line-height: 1.5;
+//     margin:0px;
+// 	box-shadow:none;	
+// 	border-radius: 0px;
+//     margin-top: 0px;
+//     margin-bottom: 0px;
+//     margin-left: 0px;
+//     margin-right: 0px;
+//     height: 30px;
+//     width: 100%;
+//     background: $card-bg;
+//     padding: 0px !important;
+// }
+.image-slide {
+  height: 300px; /* Increased height for the slider */
+  width: 100%;
+  background: white;
+  // border-radius: 30px; /* Border radius for rounded corners */
+  overflow: hidden; /* Ensures child elements do not overflow the border radius */
+  margin-bottom: 20px; /* Space below the slider */
+  // margin-top: 10px;
+}
+
+.ion-slides {
+  border-radius: 15px; /* Ensure slides have rounded corners */
+}
+
+.ion-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// .full-width-image {
+//   width: 100%; /* Ensures the image covers the full width of the slide */
+//   height: auto; /* Maintain aspect ratio */
+//   border-radius: 15px; /* Rounded corners for images */
+// }
+
+.ion-slide img {
+  border-radius: 15px; /* Apply border radius to images */
+}
+
+/* Pagination styles */
+.ion-slides .swiper-pagination {
+  bottom: 10px; /* Position pagination below the slider */
+}
+
+.ion-slides .swiper-pagination-bullet {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent bullets */
+  width: 12px; /* Size of bullets */
+  height: 12px; /* Size of bullets */
+  border-radius: 50%; /* Rounded bullets */
+  opacity: 1; /* Ensure bullets are fully opaque */
+}
+
+// .ion-slides .swiper-pagination-bullet-active {
+//   background: var(--primary-color); /* Active bullet color */
+// }
+
+.image-card {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 150px;
+    width: 150px;
+    background: $card-bg;
+    padding: 1px !important;
+}
+.icon-size {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px !important;
+}
+ 
+.button-class{
+    margin:0px;
+	box-shadow:none;	
+	border-radius: 10px;
+    align-content :"center" ;
+    font-size:"20px";
+    width: 100%;
+    color: $cust_clr1;
+    padding: 0px !important;
+    background: $card-bg;
+}
+.no-padding {
+    padding: 0px !important;
+}
+.fixed-outside{
+    position: fixed;
+    bottom: 57px;
+    width: 100%;
+}
+.image-slide{
+	// margin-top: 1px;	
+	height:250px;
+  width: 100%;
+	background:white;
+    margin-bottom: 10px;	
+}
+
+.prev-button, .next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .prev-button {
+    left: 10px;
+  }
+  
+  .next-button {
+    right: 10px;
+  }
+
+
+.TextColor {
+	color :$cust_clr1;
+	background: white;
+}
+
+.cardBg {
+	color :$cust_clr;
+	background: $card-bg;
+    width: 100%;
+}
+
+
+.card-class-full-1 {
+  color: $optcolor;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin:0px;
+	box-shadow:none;	
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    margin-right: 1px;
+    // height: 28px;
+    width: 100%;
+    background: white;
+    padding: 0px !important;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+
+.follow-us {
+   margin-top: 10px;
+   margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .follow-us-btn {
+    margin-top: 2px;
+   margin-bottom: 10px;
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #8C5830; /* Change the color as needed */
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-icon {
+    color: $optcolor;
+    height: 40px; /* Increased height */
+    width: 40px;  /* Increased width */
+    font-size: 30px; /* Adjust font size if using text or icon inside */
+    background-color: #fff; /* Background color of the icon buttons */
+    border-radius: 50%; /* Keep the buttons circular */
+    margin: 0 10px; /* Adjust spacing between icons */
+    padding: 6px; /* Adjust padding to fit the larger icon */
+    cursor: pointer;
+    transition: box-shadow 0.3s; /* Add transition effect for box-shadow */
+}
+
+  .social-icon:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+  }
+  
+
+  
+
+
+
+
+.container {
+    display: flex;
+    justify-content: center; /* Center align boxes horizontally */
+    align-items: center; /* Center align boxes vertically */
+  
+  }
+  
+  .custom-list {
+    /* Add custom styles for the list */
+  }
+  
+  .custom-label-gold,
+  .custom-label-other {
+    margin: 10px; /* Add margin between boxes */
+  }
+  
+ .box {
+    background-color: white; /* White background */
+    // box-shadow: inset 5px -7px 18px 18px #e6e5e5;
+    // border-radius: 76px 0px 76px 0px;
+    height: 72px;
+    width: 168px;
+    display: flex; /* Ensure flex layout */
+    // flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+}
+
+
+.metal-image {
+  width: 62px; /* Adjust image width */
+  height: 62px; /* Adjust image height */
+  margin-right: 15px; /* Adds spacing between the image and text */
+}
+
+
+.text-box {
+  display: flex;
+  flex-direction: column; /* This ensures text is aligned top to bottom */
+}
+
+.label-text, .custom-span-gold, .rate-text {
+  margin-bottom: 5px; /* Adds some spacing between lines of text */
+}
+
+
+
+  // .label-text,
+  // .custom-span-gold,
+  // .custom-span-other,
+  // .rate-text {
+  //   display: block;
+  //   padding: 10px;
+  //   text-align: center;
+  //   color: $optcolor; /* Change text color to dark gray */
+  // }
+  
+  
+  .custom-span-gold,
+  .custom-span-other {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #8C5830;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+
+  .align{
+    text-align: center;
+  }
+  
+
+
+
+  .item.no-padding {
+    padding: 0;
+  }
+  
+  .row-no-padding {
+    padding: 0;
+  }
+  
+  .card-class-home {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add shadow effect */
+    text-align: center;
+    padding: 20px;
+    margin: 10px 10px 10px 10px;
+  }
+  
+  .icon-card {
+    font-size: 5em; /* Adjust icon size */
+    color: $optcolor; /* Adjust icon color */
+  }
+  
+  .label-card {
+    font-weight: 450;
+    color: $optcolor;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .social-icon img {
+    width: 100%; /* Ensures image uses the full width of the container */
+    height: auto; /* Maintains aspect ratio */
+ }
+ 
+
+  .full-width-image {
+    height: 200px !important;
+    width: 364px !important;
+    /* width: 100% !important; */
+    border-radius: 0 !important;
+}
+
+
+
+
+.colorbgtxt{
+  color: #8C5830;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+
+.center-image {
+  display: block;
+  margin: 0 auto; /* Centers the image horizontally */
+}
+
+.aligntextcenter{
+
+  // align-items: center !important;
+  padding-top: 10px;
+  color: #fff !important;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+.ion-card {
+  margin: 10px;
+}
+
+
+.custom-slider .swiper-pagination {
+  position: absolute;
+  bottom: -2px; /* Moves dots below the slider */
+  width: 100%;
+  text-align: center;
+}
+
+
+
+.custom-slider .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #5B3713; /* Gray color for inactive dots */
+  margin: 0 4px;
+  border-radius: 50%; /* Make the dots round */
+  opacity: 1; /* Ensure full visibility */
+}
+
+.custom-slider .swiper-pagination-bullet-active {
+  background-color: #5B3713; /* Dark brown color for the active dot */
+  width: 30px; /* Make the active dot larger */
+  height: 8px; /* Keep height the same for active dot */
+  border-radius: 10px; /* Oval shape for active dot */
+}
+
+
+.todays-price-wrapper {
+  width: 100%;
+  text-align: left; /* Aligns the text to the left */
+  margin-bottom: 10px; /* Adds space between the text and the boxes */
+}
+
+.todays-price-text {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  padding-left: 14px; /* Adjust as per your layout */
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.custom-container {
+  text-align: center;
+  padding: 0px 20px 20px 12px;
+  background-color: $newthemebackground; /* Matches the yellow background color */
+}
+
+.custom-title {
+  font-size: 24px;
+  color: #5A3E1B; /* Brownish color for the title */
+  margin-bottom: 20px;
+}
+
+.custom-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+  grid-gap: 15px; /* Gap between the cards */
+  justify-items: center;
+}
+
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 110px;  /* Card width */
+  height: 110px; /* Card height */
+  border-radius: 10px;
+  background-color: #fff; /* White background for the cards */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for the cards */
+  cursor: pointer;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+  transition: 0.2s ease;
+}
+
+.custom-icon {
+  width: 50px;  /* Icon width */
+  height: 50px; /* Icon height */
+  margin-bottom: 8px;
+}
+
+.custom-label {
+  font-size: 14px;
+  color: #5A3E1B; /* Dark brown text color */
+}
+
+
+.custom-background {
+  background-color: $newthemebackground !important;
+}
+
+
