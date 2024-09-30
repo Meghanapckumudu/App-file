@@ -9,8 +9,9 @@ $font-path: "../assets/fonts";
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
+@import "~@ionic/angular/css/ionic.globals";
+@import "~@ionic/angular/css/ionic.theme.default";
 
-@import "ionic.globals";
 
 // Shared Variables
 // --------------------------------------------------
@@ -31,7 +32,7 @@ $app-direction: ltr;
 
 
 
-  
+
 
 $colors: (
     // primary:    #488aff,
@@ -50,10 +51,10 @@ $colors: (
     navigation:#4b2753,
     defnav:#bd3636,
     cement:#999,
-    // toolbar: #be950cea, 
+    // toolbar: #be950cea,
 );
 
-//new color combination 
+//new color combination
 
 // mahalakshmi
 /*
@@ -131,7 +132,7 @@ $loginiconcoor:#904c1f;
 */
 
 
-//anand 
+//anand
 /*
 $cust_clr1:#420d23; //f1e757
 //$cust_clr1:#6d4254; //f1e757
@@ -181,11 +182,11 @@ $menuitemlistbackgroubnd:#e1d6d652;
 $loginiconcoor:#8C4D18;
 */
 
-//Navya 
+//Navya
 /*
 $cust_clr1:hsla(46, 88%, 40%, 0.918);
-$cust_clr:#ecb110ea;    
-$btn_bc: #ffffffea;   
+$cust_clr:#ecb110ea;
+$btn_bc: #ffffffea;
 $lbl_clr: #af8b15;
 $text-inputclr:#f7e4a8;
 $card-bg:  #f8e8b1fb;
@@ -202,7 +203,7 @@ $flipfront:#D9BC9A;
 $flipback:red;
 $menuitemscolor:$blacktheme;
 $menuitemlistbackgroubnd:#e1d6d6;
-$loginiconcoor:#875029; 
+$loginiconcoor:#875029;
 */
 
 //jai maruthi jewellers
@@ -281,8 +282,8 @@ $loginiconcoor:#000000;
 //sunrise abharan
 /*
 $cust_clr1:hsla(46, 88%, 40%, 0.918);
-$cust_clr:#ecb110ea;    
-$btn_bc: #ffffffea;   
+$cust_clr:#ecb110ea;
+$btn_bc: #ffffffea;
 $lbl_clr: #af8b15;
 $text-inputclr:#f7e4a8;
 $card-bg:  #f8e8b1fb;
@@ -300,14 +301,14 @@ $flipfront:#ba853a;
 $flipback:red;
 $menuitemscolor:$blacktheme;
 $menuitemlistbackgroubnd:#efeaea91;
-$loginiconcoor:#000000ea; 
+$loginiconcoor:#000000ea;
 */
 
 //madhuri
 /*
 $cust_clr1:hsla(46, 88%, 40%, 0.918);
-$cust_clr:#ecb110ea;    
-$btn_bc: #ffffffea;   
+$cust_clr:#ecb110ea;
+$btn_bc: #ffffffea;
 $lbl_clr: #af8b15;
 $text-inputclr:#f7e4a8;
 $card-bg:  #f8e8b1fb;
@@ -324,14 +325,14 @@ $flipfront:#d7b369;
 $flipback:red;
 $menuitemscolor:$blacktheme;
 $menuitemlistbackgroubnd:#efeaea91;
-$loginiconcoor:#875029; 
+$loginiconcoor:#875029;
 */
 
 //jp jewellers
 /*
 $cust_clr1:hsla(46, 88%, 40%, 0.918);
-$cust_clr:#ecb110ea;    
-$btn_bc: #ffffffea;   
+$cust_clr:#ecb110ea;
+$btn_bc: #ffffffea;
 $lbl_clr: #af8b15;
 $text-inputclr:#f7e4a8;
 $card-bg:  #f8e8b1fb;
@@ -389,7 +390,7 @@ $white-bg: white;
 $heading-bg:#bdd6f7;
 
 $blacktheme:#000;
-$themecolor:#a98728; 
+$themecolor:#a98728;
 $optcolor:#823600;
 $headercolor:#130846;
 $boxcolor:#a98728;
@@ -413,7 +414,7 @@ $white-bg: white;
 $heading-bg:#bdd6f7;
 
 $blacktheme:#000;
-$themecolor:#3a3e7d; 
+$themecolor:#3a3e7d;
 $optcolor:#767BC0;
 $headercolor:#130846;
 $boxcolor:#e1ab18;
@@ -546,14 +547,14 @@ $flipfront:#ba853a;
 $flipback:red;
 $menuitemscolor:$blacktheme;
 $menuitemlistbackgroubnd:#efeaea91;
-$loginiconcoor:#000000ea; 
+$loginiconcoor:#000000ea;
 */
 
 //vk mani
 /*
 $cust_clr1:hsla(46, 88%, 40%, 0.918);
-$cust_clr:#ecb110ea;    
-$btn_bc: #ffffffea;   
+$cust_clr:#ecb110ea;
+$btn_bc: #ffffffea;
 $lbl_clr: #af8b15;
 $text-inputclr:#f7e4a8;
 $card-bg:  #f8e8b1fb;
@@ -632,8 +633,8 @@ $newthemebackground:#ffc400;
 //swarnanjali
 /*
 $cust_clr1:hsla(46, 88%, 40%, 0.918);
-$cust_clr:#ecb110ea;    
-$btn_bc: #ffffffea;   
+$cust_clr:#ecb110ea;
+$btn_bc: #ffffffea;
 $lbl_clr: #af8b15;
 $text-inputclr:#f7e4a8;
 $card-bg:  #f8e8b1fb;
@@ -650,7 +651,7 @@ $flipfront:#fe9d00e0;
 $flipback:red;
 $menuitemscolor:$blacktheme;
 $menuitemlistbackgroubnd:#efeaea91;
-$loginiconcoor:#000000ea; 
+$loginiconcoor:#000000ea;
 */
 
 /*
@@ -731,8 +732,8 @@ $loginiconcoor:#68b8c4;
 
 
 
-//old color combination 
-/* 
+//old color combination
+/*
 //verma
 $cust_clr: #a80606;
 $btn_bc: #e7d1d1;
@@ -753,8 +754,8 @@ $text-inputclr:  #ddb3a7;
 /*
 
 $cust_clr1:hsla(46, 88%, 40%, 0.918);
-$cust_clr:#1d1602ea;    
-$btn_bc: #f5e3a5ea;   
+$cust_clr:#1d1602ea;
+$btn_bc: #f5e3a5ea;
 $lbl_clr: #af8b15;
 $text-inputclr:  #f7e4a8;
 $card-bg:  #f8e8b1fb;
@@ -825,7 +826,7 @@ $heading-bg:#d5d5f3;
 // $heading-bg:#eeb6d3;
 
 /*
-//ATM 
+//ATM
 $cust_clr1:#cc1111;
 $cust_clr:#f15757; // #ac4e33 ;//#D67B63;
 $btn_bc: #f5f1f1;
@@ -841,7 +842,7 @@ $heading-bg:#f8c8c8;
 
 
 
-//KGP 
+//KGP
 /*
 $cust_clr1:#6d4254; //f1e757
 $cust_clr:#f7192f; // #ac4e33 ;//#D67B63;
@@ -853,7 +854,7 @@ $misc-bg: #030303;
 $white-bg: #f8edf2;
 $heading-bg:#f0acc8;
 */
-//nama 
+//nama
 /*
 $cust_clr1:#6d4254; //f1e757
 $cust_clr:#f7192f; // #ac4e33 ;//#D67B63;
@@ -867,7 +868,7 @@ $heading-bg:#f0acc8;
 */
 
 
-//Praveen 
+//Praveen
 
 /*
 $cust_clr1:#420d23; //f1e757
@@ -882,7 +883,7 @@ $white-bg: #f8edf2;
 $heading-bg:#f0acc8;
 */
 
-//Madhuri 
+//Madhuri
 /*
 $cust_clr1:#e69a0e; //f1e757
 $cust_clr:#a0971d; // #ac4e33 ;//#D67B63;
@@ -895,7 +896,7 @@ $white-bg: #ec9d0b;
 $heading-bg:#e2b10e;
 
 */
-//vaarahi 
+//vaarahi
 /*
 $cust_clr1:#e69a0e; //f1e757
 $cust_clr:#a0971d; // #ac4e33 ;//#D67B63;

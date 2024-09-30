@@ -1,7 +1,5 @@
 {
-  "name": "asterix-jms",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
+  "name": "ionic-app-base",
+  "integrations": {},
+  "type": "angular"
 }
