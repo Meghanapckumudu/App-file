@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams, Platform } from '@ionic/angular';
 import { DataProvider } from '../../providers/data/data';
-import { WebClientProvider } from '../../providers/web-client/web-client';
 
-@IonicPage()
+
 @Component({
   templateUrl: 'howtouse.html',
 })

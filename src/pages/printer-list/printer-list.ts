@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Platform, Navbar } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Platform, Navbar } from '@ionic/angular';
 
 import { DataProvider } from '../../providers/data/data';
 //import { ChitListPage } from '../chit-list/chit-list';
@@ -7,7 +7,7 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 declare var cordova;
 
 
-@IonicPage()
+
 @Component({
   selector: 'page-printer-list',
   templateUrl: 'printer-list.html',
@@ -18,17 +18,17 @@ export class PrinterListPage implements OnInit {
   devices: any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform,
     public bluetoothSerial: BluetoothSerial, public data: DataProvider, public viewCtrl: ViewController) {
-      
+
     }
     // try this
     ngOnInit(): void {
-      this.platform.ready().then(() => { 
+      this.platform.ready().then(() => {
         console.log(this.bluetoothSerial, "Loading App")
         //this.bluetoothSerial.enable(); R comment
       });
     }
 
-  
+
   ionViewDidLoad_r() {
     console.log('I-ionViewDidLoad PrinterListPage');
     console.log(this.data.printMessage);
@@ -77,13 +77,13 @@ export class PrinterListPage implements OnInit {
       });
       })
 
-      
-    
-      
-    
-   
+
+
+
+
+
   }
-  enableBluetooth(){    
+  enableBluetooth(){
     this.bluetoothSerial.enable().then(function(enabled) {
       setTimeout(function() {
         alert({
@@ -92,7 +92,7 @@ export class PrinterListPage implements OnInit {
             okButtonText: "OK, nice!"
         });
       }, 500);
-    }); 
+    });
   }
 
 

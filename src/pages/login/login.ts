@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChildren, QueryList, Input, ViewChild } from '@angular/core';
-import { IonicPage, NavParams, AlertController, App, ModalController } from 'ionic-angular';
+import { IonicPage, NavParams, AlertController, App, ModalController } from '@ionic/angular';
 import { MenuPage } from '../menu/menu';
 import { WebClientProvider } from '../../providers/web-client/web-client';
 import { TabsPage } from '../tabs/tabs';
@@ -15,13 +15,13 @@ import { stringify } from '@angular/core/src/util';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
-import { Platform } from 'ionic-angular';
+import { Platform } from '@ionic/angular';
 import { Observable } from 'rxjs-compat';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { Device } from '@ionic-native/device';
 import { Location } from '@angular/common';
-import { NavController } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';;
+import { NavController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';;
 declare var SMSReceive: any;
 
 // import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
@@ -29,7 +29,7 @@ declare var SMSReceive: any;
 //var smsRetriever = window['cordova']['plugins']['smsRetriever'];
 
 var is_Email_Valid: Boolean = false
-@IonicPage()
+
 @Component({
   selector: 'page-login', //'page-login-blue',
   templateUrl: 'login.html',
@@ -186,7 +186,7 @@ export class LoginPage {
         this.branches = result;
         console.log("branxhws ",this.branches);
         // this.recoverObj.branch = this.branches[0].branch_code;
-        
+
         if(this.branches.length==1)
         {
           //this.recoverObj.branch = this.branches[0].Branch;
@@ -228,7 +228,7 @@ export class LoginPage {
           //this.rootPage = LoginPage;
           if (this.data.environment == 'dev') {
             console.log("---I am here");
-         
+
             this.storage.get('loggedInUserObj').then((val) => {
               console.log("val" + val);
               if (val == null || val == "") {
@@ -719,7 +719,7 @@ export class LoginPage {
       console.log("RecoverClicked");
 
       console.log("barxnches list",this.recoverObj);
-      
+
       console.log(this.recoverObj.branch);
       if ((this.recoverObj.mobile.indexOf('a') > -1) || (this.recoverObj.mobile.indexOf('A') > -1)) {
         this.recoverObj.mobile = this.recoverObj.mobile.substring(1);

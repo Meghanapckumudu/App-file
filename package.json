@@ -18,7 +18,6 @@
     "@angular/compiler-cli": "^18.2.6",
     "@angular/core": "18.2.6",
     "@angular/forms": "18.2.6",
-    "@angular/http": "7.2.16",
     "@angular/platform-browser": "18.2.6",
     "@angular/platform-browser-dynamic": "18.2.6",
     "@awesome-cordova-plugins/android-permissions": "^6.9.0",
@@ -53,17 +52,12 @@
     "cordova-plugin-splashscreen": "^6.0.2",
     "de.appplant.cordova.plugin.printer": "^0.7.3",
     "firebase": "^10.13.2",
-    "ionic": "^5.4.16",
-    "ionic-angular": "3.9.10",
     "ionicons": "7.4.0",
     "moment": "^2.30.1",
     "npm": "^10.8.3",
     "razorpay": "^2.9.4",
-    "rxjs": "7.8.1",
-    "rxjs-compat": "6.6.7",
     "sw-toolbox": "3.6.0",
-    "update": "^0.7.4",
-    "zone.js": "0.15.0"
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.4",
@@ -89,7 +83,7 @@
     "rimraf": "^3.0.2",
     "sass": "^1.70.0",
     "tslint-microsoft-contrib": "^6.2.0",
-    "typescript": "5.5.0"
+    "typescript": "5.5.4"
   },
   "description": "An Ionic project",
   "cordova": {

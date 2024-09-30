@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from '@ionic/angular';
 import { SearchPage } from '../search/search';
 import { CollectionReportPage } from '../collection-report/collection-report';
 import { SettingsPage } from '../settings/settings';
@@ -21,7 +21,7 @@ import { JmshomePage } from '../jmshome/jmshome';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-tabs',
   templateUrl: 'tabs.html',

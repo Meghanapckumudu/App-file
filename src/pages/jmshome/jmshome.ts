@@ -1,30 +1,24 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController,Slides } from 'ionic-angular';
+import { AlertController, ModalController, NavController, NavParams } from '@ionic/angular';
 //import { MessagesPage } from '../messages/messages';
 //import { PaymentModePage } from '../payment-mode/payment-mode';
-import { SchemeDetailPage } from '../scheme-detail/scheme-detail';
-import { LoginPage } from '../login/login';
-import { JoinChitPage } from '../join-chit/join-chit';
-import { ChitListPage } from '../chit-list/chit-list';
 import { WebClientProvider } from '../../providers/web-client/web-client';
+import { ChitListPage } from '../chit-list/chit-list';
+import { LoginPage } from '../login/login';
+import { SchemeDetailPage } from '../scheme-detail/scheme-detail';
 // import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
-import { PrinterListPage } from '../printer-list/printer-list';
-import { DataProvider } from '../../providers/data/data';
-import { memberupdatePage } from '../member-update/member-update';
-import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
-import { Platform } from 'ionic-angular';
-import { Observable } from 'rxjs-compat';
-import { Location } from '@angular/common';
+import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { SearchPage } from '../search/search';
-import { OffersPage } from '../offers/offers';
+import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
+import { DataProvider } from '../../providers/data/data';
 import { BenifitsPage } from '../benifits/benifits';
+import { memberupdatePage } from '../member-update/member-update';
+import { OffersPage } from '../offers/offers';
+import { SearchPage } from '../search/search';
 //import { HowtousePage } from '../Howtouse/Howtouse';
-import { FaqPage } from '../faq/faq';
-import {HowtouseappPage} from '../howtouseapp/howtouseapp';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { FaqPage } from '../faq/faq';
+import { HowtouseappPage } from '../howtouseapp/howtouseapp';
 
 
 /**
@@ -34,13 +28,13 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-jmshome',
   templateUrl: 'jmshome.html',
 })
 export class JmshomePage {
-  
+
   pushes: any = [];
   slide1 = "https://kumuduapps.in:8443/logo/" + this.data.storeID + "/slide/slide1.jpg"
   slide2 = "https://kumuduapps.in:8443/logo/" + this.data.storeID + "/slide/slide2.jpg"
@@ -67,7 +61,7 @@ export class JmshomePage {
     spaceBetween: 5,
     pagination: { clickable: true }
   };
-  
+
 
   // slideOpts = {
   //   initialSlide: 0,
@@ -78,9 +72,9 @@ export class JmshomePage {
   //   },
   //   loop: true,
   // };
-  
 
-  
+
+
   myplan: SafeResourceUrl;
   plan: SafeResourceUrl;
   offer: SafeResourceUrl;
@@ -91,13 +85,13 @@ export class JmshomePage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public apiClient: WebClientProvider, 
+    public apiClient: WebClientProvider,
     public modalCtrl: ModalController, public data: DataProvider, private fcm: FCM, public plt: Platform,
     public alertCtrl: AlertController, public storage: Storage,
     public iab: InAppBrowser,  public youtube:YoutubeVideoPlayer,private sanitizer: DomSanitizer ) {
 
-   
-      
+
+
 
     this.plt.ready()
       .then(() => {
@@ -165,8 +159,8 @@ export class JmshomePage {
     this.benifits = this.sanitizer.bypassSecurityTrustResourceUrl('assets/imgs/icons/benefits.png');
     this.offer = this.sanitizer.bypassSecurityTrustResourceUrl('assets/imgs/icons/offer.png');
     this.guide = this.sanitizer.bypassSecurityTrustResourceUrl('assets/imgs/icons/guide.png');
-    
-    
+
+
   }
 
   subscription: any;
@@ -202,7 +196,7 @@ export class JmshomePage {
     this.data.membsearchterm = "";
     console.log('ionViewDidLoad DashboardPage');
     console.log("Slide1 : " + this.slide1)
-    
+
     if (this.data.userLoginType != 'customer') {
       console.log(" this.data.agentID : " + this.data.agentID);
       this.apiClient.showLoader();
@@ -247,7 +241,7 @@ export class JmshomePage {
 
     }
   }
- 
+
   messages() {
     console.log('messages');
     this.navCtrl.parent.select(3);
@@ -297,12 +291,12 @@ export class JmshomePage {
   faq() {
     this.navCtrl.push(FaqPage);
   }
-  
+
   fb() {
     this.apiClient.Get_fbpath().then(result => {
       let urlNew = "";
       console.log("fb res",result);
-      
+
       console.log("Data: of fb" + (result["data"]))
       if (result["data"] != "" || result["data"] != null) {
         urlNew = result["data"] + "";
@@ -324,7 +318,7 @@ export class JmshomePage {
           const browser = this.iab.create(urlNew, "_blank", "hidden=no,location=no");
           browser.show()
         }
-       
+
       }
     });
   }

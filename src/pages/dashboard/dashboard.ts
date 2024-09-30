@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
+import { AlertController, ModalController, NavController, NavParams } from '@ionic/angular';
 //import { MessagesPage } from '../messages/messages';
 //import { PaymentModePage } from '../payment-mode/payment-mode';
-import { SchemeDetailPage } from '../scheme-detail/scheme-detail';
 import { LoginPage } from '../login/login';
+import { SchemeDetailPage } from '../scheme-detail/scheme-detail';
 //import { JoinChitPage } from '../join-chit/join-chit';
-import { ChitListPage } from '../chit-list/chit-list';
 import { WebClientProvider } from '../../providers/web-client/web-client';
+import { ChitListPage } from '../chit-list/chit-list';
 // import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 //import { PrinterListPage } from '../printer-list/printer-list';
+import { Platform } from '@ionic/angular';
+import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
 import { DataProvider } from '../../providers/data/data';
 import { memberupdatePage } from '../member-update/member-update';
-import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
-import { Platform } from 'ionic-angular';
 //import { Observable } from 'rxjs-compat';
-import { Location } from '@angular/common';
 import { Storage } from '@ionic/storage';
 import { SearchPage } from '../search/search';
 
@@ -25,7 +24,7 @@ import { SearchPage } from '../search/search';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-@IonicPage()
+
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',

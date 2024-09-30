@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams, Platform } from '@ionic/angular';
 import { DataProvider } from '../../providers/data/data';
 import { WebClientProvider } from '../../providers/web-client/web-client';
 
@@ -10,7 +10,7 @@ import { WebClientProvider } from '../../providers/web-client/web-client';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-faq',
   templateUrl: 'faq.html',

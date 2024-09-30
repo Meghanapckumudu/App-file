@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ModalController, Platform } from 'ionic-angular';
+import { AlertController, ModalController, NavController, NavParams, Platform } from '@ionic/angular';
 //import { CustomerProfilePage } from '../customer-profile/customer-profile';
 //import { MyProfilePage } from '../my-profile/my-profile';
 //import { SchemeDetailPage } from '../scheme-detail/scheme-detail';
 import { SchemePayPage } from '../scheme-pay/scheme-pay';
 //import { PaymentSuccessPage } from '../payment-success/payment-success';
+import { DataProvider } from '../../providers/data/data';
 import { WebClientProvider } from '../../providers/web-client/web-client';
 import { PrinterListPage } from '../printer-list/printer-list';
-import { DataProvider } from '../../providers/data/data';
 
 /**
  * Generated class for the CollectionReportPage page.
@@ -16,7 +16,7 @@ import { DataProvider } from '../../providers/data/data';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-collection-report',
   templateUrl: 'collection-report.html',
@@ -90,7 +90,7 @@ export class CollectionReportPage {
     });
     alert.present();
   }
- 
+
   print(obj) {
     console.log(obj);
     // this.data.printMessage = this.data.paymentSuccessReportPrintMsg(obj);

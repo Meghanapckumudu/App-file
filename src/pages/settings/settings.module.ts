@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { IonicModule, IonicPageModule } from '@ionic/angular';
 import { SettingsPage } from './settings';
 
 @NgModule({
@@ -8,6 +8,8 @@ import { SettingsPage } from './settings';
   ],
   imports: [
     IonicPageModule.forChild(SettingsPage),
+    IonicModule.forRoot(SettingsPage)
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SettingsPageModule {}

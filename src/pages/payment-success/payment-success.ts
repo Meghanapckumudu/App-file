@@ -1,19 +1,19 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, ModalController, Platform, Navbar } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ModalController, Platform, Navbar } from '@ionic/angular';
 import { PrinterListPage } from '../printer-list/printer-list';
 import { DataProvider } from '../../providers/data/data';
 import { SearchPage } from '../search/search';
 //import { DashboardPage } from '../dashboard/dashboard';
 import { MenuPage } from '../menu/menu';
 
-@IonicPage()
+
 @Component({
   selector: 'page-payment-success',
   templateUrl: 'payment-success.html',
 })
 export class PaymentSuccessPage {
   @ViewChild('navbar') navBar: Navbar;
- 
+
   //private tabIndex: number = 0;
   voucherNo: any = "";
   constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform,

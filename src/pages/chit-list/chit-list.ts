@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
-import { WebClientProvider } from '../../providers/web-client/web-client';
-import { JoinChitPage } from '../join-chit/join-chit';
-import { GroupsdetailsPage } from '../groupsdetails/groupsdetails';
+import { NavController, NavParams } from '@ionic/angular';
 import { DataProvider } from '../../providers/data/data';
+import { WebClientProvider } from '../../providers/web-client/web-client';
+import { GroupsdetailsPage } from '../groupsdetails/groupsdetails';
+import { JoinChitPage } from '../join-chit/join-chit';
 /**
  * Generated class for the ChitListPage page.
  *
@@ -11,7 +11,7 @@ import { DataProvider } from '../../providers/data/data';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-chit-list',
   templateUrl: 'chit-list.html',
@@ -50,7 +50,7 @@ export class ChitListPage {
 
   }
 
-  
+
  ionViewDidLeave() {
   //this.subscription.unsubscribe();
 }

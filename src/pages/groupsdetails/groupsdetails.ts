@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams, Platform } from '@ionic/angular';
 import { DataProvider } from '../../providers/data/data';
 /**
  * Generated class for the GroupsdetailsPage page.
@@ -8,7 +8,7 @@ import { DataProvider } from '../../providers/data/data';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-groupsdetails',
   templateUrl: 'groupsdetails.html',

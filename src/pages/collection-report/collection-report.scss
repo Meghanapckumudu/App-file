@@ -8,10 +8,10 @@ page-collection-report {
 	width:100%;
 	}
 
-	
+
 .card-header-ios, .card-header-md, .card-header-wp{
 	text-align: center;
-	color: $optcolor;	
+	color: $optcolor;
 	// background:white;
 	background: linear-gradient(to right, #ffffff, #f0f0f0); /* Gradient colors */
 	box-shadow: inset 8px -7px 8px 5px rgba(0, 0, 0, 0.1)
@@ -27,7 +27,7 @@ page-collection-report {
 	border-bottom:1px solid $text-inputclr;
 }
 
-.card-content .item-button {    
+.card-content .item-button {
     font-size: 1.9rem;
 }
 

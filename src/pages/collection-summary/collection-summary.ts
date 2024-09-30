@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
-import { WebClientProvider } from '../../providers/web-client/web-client';
+import { NavController, NavParams, Platform } from '@ionic/angular';
 import { DataProvider } from '../../providers/data/data';
+import { WebClientProvider } from '../../providers/web-client/web-client';
 
 /**
  * Generated class for the CollectionSummaryPage page.
@@ -10,7 +10,7 @@ import { DataProvider } from '../../providers/data/data';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-collection-summary',
   templateUrl: 'collection-summary.html',

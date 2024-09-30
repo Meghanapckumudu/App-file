@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from '@ionic/angular';
 import { DataProvider } from '../../providers/data/data';
 //import { WebClientProvider } from '../../providers/web-client/web-client';
 
@@ -11,7 +11,7 @@ import { DataProvider } from '../../providers/data/data';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-offers',
   templateUrl: 'offers.html',

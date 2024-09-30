@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from '@ionic/angular';
 //import { FCM } from '@ionic-native/fcm';
-import { Platform } from 'ionic-angular';
+import { Platform } from '@ionic/angular';
 import { Observable } from 'rxjs-compat';
 import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
 //import { map } from 'rxjs-compat/operator';
@@ -13,7 +13,7 @@ import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-pushnote',
   templateUrl: 'pushnote.html',
@@ -39,7 +39,7 @@ export class PushnotePage {
             console.log(data);
              console.log(JSON.stringify(data));
             console.log("this.pushes:" + data.title);
-           
+
             // console.log("this.pushes:" + this.pushes)
             // console.log("this.pushes.title:" + this.pushes.title)
             // console.log('title' + this.pushes.title);

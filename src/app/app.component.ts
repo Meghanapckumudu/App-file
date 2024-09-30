@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { Platform, Searchbar, NavController, App } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';     
+import { App, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
 import { LoginPage } from '../pages/login/login';
 import { DataProvider } from '../providers/data/data';
-import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +17,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       platform.registerBackButtonAction(() => {
-        //sometimes the best thing you can do is not think, not wonder, not imagine, not obsess. 
+        //sometimes the best thing you can do is not think, not wonder, not imagine, not obsess.
         //just breathe, and have faith that everything will work out for the best.
       }, 1);
       try {

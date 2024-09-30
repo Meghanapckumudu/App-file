@@ -27,7 +27,7 @@ export class DataProvider {
   public esypay_type: string = "";
 
   public userLoginType = '';
-  public loggedInUserObj = {};
+  public loggedInUserObj :any= {};
   public agentID = '';
   public printMessage = '';
   public environment = 'dev' ; // 'dev';
@@ -46,7 +46,7 @@ export class DataProvider {
   public url: string = "http://192.168.43.210:8080/asterix-jms-api/api/";
   public url: string = "https://kumuduapps.in:8443/api/";
   //public url: string = "http://jms.asterixtechnology.com/api/";
-  
+
   public url: string = "http://148.72.208.43/api/";
 */
   public url: string = "https://kumuduapps.in:8443/api/";
@@ -57,12 +57,12 @@ export class DataProvider {
 
   public storeID: string = "521";
   public customersCanRegister: boolean = true;
-  public membsearchterm: "";
-  public print_userobj = {};
+  public membsearchterm:string= "";
+  public print_userobj :any= {};
 
   //ionic cordova plugin add https://github.com/isathyam/CordovaPayTM.git --variable GENERATE_URL=http://192.168.0.7:8080/asterix-jms-api/api/schemes/paytmcsum --variable VERIFY_URL=http://192.168.0.7:8080/asterix-jms-api/api/schemes/paytmcsumValidate --variable MERCHANT_ID=Asteri15527685228015 --variable INDUSTRY_TYPE_ID=Retail --variable WEBSITE=http://asterixtechnologies.com
   //cordova plugin add git@github.com:Kkiranandroid/Paytm-integration-in-ios-ionic2-and-ionic3.git --variable GENERATE_URL=http://localhost:8080/asterix-jms-api/api/schemes/paytmcsum --variable VERIFY_URL=http://localhost:8080/asterix-jms-api/api/schemes/paytmcsum --variable MERCHANT_ID=Asteri15527685228015 --variable INDUSTRY_TYPE_ID=Retail --variable WEBSITE=http://asterixtechnologies.com
-  setUserLoginType(type) {
+  setUserLoginType(type:any) {
     this.storage.set('userLoginType', type);
     this.userLoginType = type;
   }
@@ -70,7 +70,7 @@ export class DataProvider {
     return this.userLoginType;
   }
 
-  setSearchterm(search) {
+  setSearchterm(search:any) {
     this.membsearchterm = search;
   }
 
@@ -78,7 +78,7 @@ export class DataProvider {
     return this.membsearchterm;
   }
 
-  set_user_printObj(obj) {
+  set_user_printObj(obj:any) {
     this.storage.set('print_userobj', obj);
     this.print_userobj = obj;
     console.log("this.print_userobj");
@@ -88,10 +88,10 @@ export class DataProvider {
 
 
 
-  getUser() {
+  getUser() :any{
     return this.loggedInUserObj;
   }
-  setUser(obj) {
+  setUser(obj:any) {
     this.storage.set('loggedInUserObj', obj);
     this.loggedInUserObj = obj;
 
@@ -99,12 +99,12 @@ export class DataProvider {
   getAgentID() {
     return this.agentID;
   }
-  setAgentID(agentID) {
+  setAgentID(agentID:any) {
     this.agentID = agentID;
     this.storage.set("agentID", agentID)
   }
-  paymentSuccessPrintMsg(obj) {
-    
+  paymentSuccessPrintMsg(obj:any) {
+
     console.log(obj);
     let BILL = "";
     console.log( "this.set_user_printObj");
@@ -125,11 +125,11 @@ export class DataProvider {
       BILL +"" + this.loggedInUserObj['store']['storeAddress'] + ',  '+  "\n" +" "
       BILL =
       BILL + this.loggedInUserObj['store']['storeCity'] + " Mobile:" + this.loggedInUserObj['store']['storeMobile'] + "\n" +" "
-      
+
     //BILL =
       //" " + this.print_userobj['store']['branch_storename'] + "\n" +" "
       // data is missing so when the data is come form backend enable this code
-      
+
       //  + this.print_userobj['branchdet']['branch_address'] + "\n" +
       // " " + this.print_userobj['branchdet']['branch_city'] + "\n" +
       // " Ph No : " + this.print_userobj['branchdet']['branch_mobile'] + "\n" +
@@ -209,7 +209,7 @@ export class DataProvider {
     return BILL;
   }
 
-  getPayMode(Mode) {
+  getPayMode(Mode:any) :any {
     if (Mode == 0) {
       return "Cash";
     } else if (Mode == 1) {
@@ -221,11 +221,11 @@ export class DataProvider {
     }
   }
 
-  checkCutOff(start, end) {
+  checkCutOff(start:any, end:any) {
     let sTime = moment(start, 'hh:mm:ss A');
     let eTime = moment(end, 'hh:mm:ss A');
     let cTime = moment();
-    // 
+    //
     // console.log(sTime);
     // console.log(cTime);
     // console.log(eTime);

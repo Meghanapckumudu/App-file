@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoadingController } from 'ionic-angular';
+import { LoadingController } from '@ionic/angular';
 // import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { DataProvider } from '../data/data';
+import { map } from 'rxjs/operators';
 //import { Razorpay } from 'razorpay';
 //
 //declare var Razorpay :any ;
@@ -17,7 +18,7 @@ export class WebClientProvider {
   public loginType: string = "agent";
   private currentLoader: any;
   private loaderMessage: string = "Please wait...";
-  public dataPvdr: DataProvider
+  public dataPvdr!: DataProvider
   devices: any = [];
   constructor(public http: HttpClient, public loadingCtrl: LoadingController, public data: DataProvider) {
     console.log('Hello WebClientProvider Provider');
@@ -42,7 +43,7 @@ export class WebClientProvider {
     }
   }
 
-  public schemeDetail(searchTerm) {
+  public schemeDetail(searchTerm:any) {
     if (this.data.getUser()['branch'] == undefined) {
 
     }
@@ -53,7 +54,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -68,7 +69,7 @@ export class WebClientProvider {
         );
     });
   }
-  public getMyLedger(obj) {
+  public getMyLedger(obj:any) {
     let endPoint =
       this.data.url + "agents/myLedger";
 
@@ -76,7 +77,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -91,7 +92,7 @@ export class WebClientProvider {
         );
     });
   }
-  public getMyLedgerSummary(obj) {
+  public getMyLedgerSummary(obj:any) {
     let endPoint =
       this.data.url + "agents/myLedgerSummary";
 
@@ -99,7 +100,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -115,7 +116,7 @@ export class WebClientProvider {
     });
   }
 
-  public getDashboard(agentID) {
+  public getDashboard(agentID:any) {
     let endPoint =
       this.data.url + "agents/dashboard/" + agentID + "/" + this.data.storeID;
 
@@ -123,7 +124,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -147,7 +148,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -172,7 +173,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -188,7 +189,7 @@ export class WebClientProvider {
     });
   }
 
-  public userLedger(mobile, mcode) {
+  public userLedger(mobile:any, mcode:any) {
     console.log(mobile);
     console.log(mcode);
     let endPoint =
@@ -198,7 +199,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, { "mobile": mobile, "mcode": mcode, "storeID": this.data.storeID, "branchId": this.data.getUser()['branch'] })
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -220,7 +221,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -235,7 +236,7 @@ export class WebClientProvider {
         );
     });
   }
-  public joinChit(obj) {
+  public joinChit(obj:any) {
     let endPoint =
       this.data.url + "schemes/joinScheme";
 
@@ -243,7 +244,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -259,7 +260,7 @@ export class WebClientProvider {
     });
   }
 
-  public makePayment(obj) {
+  public makePayment(obj:any) {
     let endPoint =
       this.data.url + "agents/payForScheme";
 
@@ -267,7 +268,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               console.log(data)
@@ -285,7 +286,7 @@ export class WebClientProvider {
   }
   //recoverpassuser
 
-  public recoverpassuser(obj) {
+  public recoverpassuser(obj:any) {
     console.log("Calling")
     let endPoint =
       this.data.url + "users/recoverpass";
@@ -294,7 +295,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -311,7 +312,7 @@ export class WebClientProvider {
   }
 
 
-  public recoverpass(obj) {
+  public recoverpass(obj:any) {
     console.log("Calling")
     let endPoint =
       this.data.url + "agents/recoverpass";
@@ -320,7 +321,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -336,7 +337,7 @@ export class WebClientProvider {
     });
   }
 
-  public agnetLogin(obj) {
+  public agnetLogin(obj:any) {
     let endPoint =
       this.data.url + "agents/login";
 
@@ -344,7 +345,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -360,7 +361,7 @@ export class WebClientProvider {
     });
   }
 
-  public customerLogin(obj) {
+  public customerLogin(obj:any) {
     let endPoint =
       this.data.url + "users/login";
 
@@ -368,7 +369,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -384,7 +385,7 @@ export class WebClientProvider {
     });
   }
 
-  public CheckUserAlreadyRegistered(obj) {
+  public CheckUserAlreadyRegistered(obj:any) {
     let endPoint =
       this.data.url + "users/CheckUsers";
 
@@ -392,7 +393,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -408,7 +409,7 @@ export class WebClientProvider {
     });
   }
 
-  public customerRegister(obj) {
+  public customerRegister(obj:any) {
     let endPoint =
       this.data.url + "users/register";
 
@@ -416,7 +417,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -432,7 +433,7 @@ export class WebClientProvider {
     });
   }
 
-  public sendOTP(obj) {
+  public sendOTP(obj:any) {
     let endPoint =
       this.data.url + "agents/sentOTP";
     console.log(obj);
@@ -440,7 +441,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -456,7 +457,7 @@ export class WebClientProvider {
     });
   }
 
-  public SendSmsToMember(obj) {
+  public SendSmsToMember(obj:any) {
     let endPoint =
       this.data.url + "agents/SendSmsToMember";
     console.log(obj);
@@ -464,7 +465,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -480,7 +481,7 @@ export class WebClientProvider {
     });
   }
 
-  public validateOTP(obj) {
+  public validateOTP(obj:any) {
     let endPoint =
       this.data.url + "agents/verifyOTP";
 
@@ -488,7 +489,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -503,7 +504,7 @@ export class WebClientProvider {
         );
     });
   }
-  public validateCustomerOTP(obj) {
+  public validateCustomerOTP(obj:any) {
     let endPoint =
       this.data.url + "users/verifyOTP";
 
@@ -511,7 +512,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -528,7 +529,7 @@ export class WebClientProvider {
   }
 
 
-  public verifySign(obj) {
+  public verifySign(obj:any) {
     let endPoint =
       this.data.url + "agents/verifysignature/";
 
@@ -536,7 +537,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -553,7 +554,7 @@ export class WebClientProvider {
   }
 
 
-  public InsertPaySignRecords(obj) {
+  public InsertPaySignRecords(obj:any) {
     let endPoint =
       this.data.url + "agents/InsertPaySignRecords/";
 
@@ -561,7 +562,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -586,7 +587,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -613,7 +614,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -629,7 +630,7 @@ export class WebClientProvider {
     });
   }
 
-  public pg_order_track_insert(obj) {
+  public pg_order_track_insert(obj:any) {
     let orderid = obj.orderId;
     let MemberId = obj.MemberId;
     let amount = obj.Amount;
@@ -642,7 +643,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -660,7 +661,7 @@ export class WebClientProvider {
 
   }
 
-  public pg_order_track_update(obj) {
+  public pg_order_track_update(obj:any) {
     let vouchNo = obj.voucher;
     let orderid = obj.orderid;
     let payid = obj.paymentid;
@@ -674,7 +675,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -693,7 +694,7 @@ export class WebClientProvider {
   }
 
 
-  public getEpayEncrypt(obj) {
+  public getEpayEncrypt(obj:any) {
     let endPoint =
       this.data.url + "agents/GetEncrypt_PgUrl_EasyPay/";
 
@@ -701,12 +702,12 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res["result"];
               console.log("res :" + data);
               resolve(data);
-      
+
             } catch (e) {
               console.log(e);
             }
@@ -720,7 +721,7 @@ export class WebClientProvider {
     });
   }
 
-  public getEpayDecrypt(obj) {
+  public getEpayDecrypt(obj:any) {
     let endPoint =
       this.data.url + "agents/GetDCrypt_PgUrl_EasyPay/";
 
@@ -728,12 +729,12 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
-              let data = res["result"];
+              let data:any = res["result"];
               console.log("res :" + data);
               resolve(data);
-      
+
             } catch (e) {
               console.log(e);
             }
@@ -747,7 +748,7 @@ export class WebClientProvider {
     });
   }
 
-  public getEpayEncrypt_new(obj) {
+  public getEpayEncrypt_new(obj:any) {
     let endPoint =
       this.data.url + "agents/GetEncrypt_PgUrl_EasyPay/";
 
@@ -755,12 +756,12 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res["result1"];
               console.log("res :" + data);
               resolve(data);
-      
+
             } catch (e) {
               console.log(e);
             }
@@ -775,9 +776,9 @@ export class WebClientProvider {
   }
 
 
-  
-  public getEpayEncrypt1(obj) {
-    
+
+  public getEpayEncrypt1(obj:any) {
+
     let endPoint =
     this.data.url + "agents/GetEncrypt_PgUrl_EasyPay/";
 
@@ -785,7 +786,7 @@ export class WebClientProvider {
     this.http
       .post(endPoint, obj)
       .subscribe(
-        res => {
+        (res:any) => {
           try {
             let data = res;
             console.log("data : " + data)
@@ -804,7 +805,7 @@ export class WebClientProvider {
   }
 
 
-  public orderId_Generate(obj) {
+  public orderId_Generate(obj:any) {
     //Store_Id/BranchId/KeyId/KeySecreate/Amount/MemberId/
     //storeID/BranchId/Amount/Reciept/MemberId
     let Amt = obj.rpay_amount;
@@ -819,11 +820,11 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               console.log("order id",data);
-              
+
               resolve(data);
               console.log(data)
             } catch (e) {
@@ -838,7 +839,7 @@ export class WebClientProvider {
     });
   }
 
-  public GetMDetForUpdate(Mgroup, MemberNo) {
+  public GetMDetForUpdate(Mgroup:any, MemberNo:any) {
     console.log("members/GetMDetForUpdate/" + Mgroup + "/" + MemberNo + "/" + this.data.storeID + "/" + this.data.getUser()['branch'])
     let endPoint = this.data.url + "members/GetMDetForUpdate/" + Mgroup + "/" + MemberNo + "/" + this.data.storeID + "/" + this.data.getUser()['branch'];
 
@@ -846,7 +847,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -862,7 +863,7 @@ export class WebClientProvider {
     });
   }
 
-  public getInstallCount(Mgroup, MemberNo) {
+  public getInstallCount(Mgroup:any, MemberNo:any) {
     console.log("members/GetInstallCount/" + Mgroup + "/" + MemberNo + "/" + this.data.storeID + "/" + this.data.getUser()['branch'])
     let endPoint = this.data.url + "members/GetInstallCount/" + Mgroup + "/" + MemberNo + "/" + this.data.storeID + "/" + this.data.getUser()['branch'];
 
@@ -870,7 +871,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -887,7 +888,7 @@ export class WebClientProvider {
   }
 
 
-  public Update_MDetails(obj) {
+  public Update_MDetails(obj:any) {
     let endPoint =
       this.data.url + "members/Update_MDetails";
 
@@ -895,7 +896,7 @@ export class WebClientProvider {
       this.http
         .post(endPoint, obj)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -920,7 +921,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -945,7 +946,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -970,7 +971,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -994,7 +995,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             console.log("res")
             try {
               let data = res;
@@ -1022,7 +1023,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             console.log("res")
             try {
               let data = res;
@@ -1045,7 +1046,7 @@ export class WebClientProvider {
   public newpg() {
     let endPoint1 = "https://kumuduapps.in:8443/hdfcRpayResponse.jsp";
     // return new Promise((resolve, reject) => {
-    return this.http.get(endPoint1).map((res: Response) => res.json())
+    return this.http.get(endPoint1).pipe(map((res: any) => res.json()));
     //})
   }
 
@@ -1053,8 +1054,8 @@ export class WebClientProvider {
     let dt: any
     let endPoint1 = "https://kumuduapps.in:8443/hdfcRpayResponse.jsp";
     return new Promise(resolve => {
-      this.http.get(endPoint1).map((res: Response) => res.json())
-        .subscribe(data => {
+      this.http.get(endPoint1).pipe(map((res: any) => res.json()))
+        .subscribe((data:any) => {
           dt = data;
           console.log(dt);
           resolve(dt);
@@ -1072,7 +1073,7 @@ export class WebClientProvider {
     let endPoint = "https://kumuduapps.in:8443/hdfcRpayResponse.jsp";
     console.log("endPoint :" + endPoint);
     return new Promise((resolve, reject) => {
-      this.http.get(endPoint).subscribe(res => {
+      this.http.get(endPoint).subscribe((res:any) => {
         console.log("res")
         try {
           console.log("res" + res)
@@ -1099,7 +1100,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             console.log("res")
             try {
               let data = res;
@@ -1127,7 +1128,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             console.log("res")
             try {
               let data = res;
@@ -1155,7 +1156,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             console.log("res")
             try {
               let data = res;
@@ -1183,7 +1184,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             console.log("res")
             try {
               let data = res;
@@ -1211,7 +1212,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             console.log("res")
             try {
               let data = res;
@@ -1231,7 +1232,7 @@ export class WebClientProvider {
     });
   }
 
-  public GetMemberAddress(mobile) {
+  public GetMemberAddress(mobile:any) {
 
     let endPoint = this.data.url + "stores/GetMemberAddress/" + this.data.storeID + "/" + mobile + "" ;
     console.log(endPoint)
@@ -1239,7 +1240,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             console.log("res")
             try {
               let data = res;
@@ -1268,7 +1269,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             console.log("res")
             try {
               let data = res;
@@ -1289,7 +1290,7 @@ export class WebClientProvider {
   }
 
   public getfaq() {
-  
+
     let endPoint =
       this.data.url + "schemes/getfaq/" + this.data.storeID;
     console.log(endPoint);
@@ -1297,7 +1298,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -1320,7 +1321,7 @@ export class WebClientProvider {
       this.http
         .get(endPoint)
         .subscribe(
-          res => {
+          (res:any) => {
             try {
               let data = res;
               resolve(data);
@@ -1343,7 +1344,7 @@ export class WebClientProvider {
           this.http
             .get(endPoint)
             .subscribe(
-              res => {
+              (res:any) => {
                 try {
                   let data = res;
                   resolve(data);
@@ -1358,7 +1359,7 @@ export class WebClientProvider {
             );
         });
   }
-  
+
   public getOrderDetails(rpay_obj){
       console.log("rpay_obj.rpay_keyId : " + rpay_obj.rpay_keyId)
       console.log("rpay_obj.key_secret : " + rpay_obj.rpay_KeySecret)
@@ -1366,7 +1367,7 @@ export class WebClientProvider {
         key_id:rpay_obj.rpay_keyId,
         key_secret:rpay_obj.rpay_KeySecret
       })
-      
+
       var options = {
         amount: rpay_obj.rpay_amount,  // amount in the smallest currency unit
         currency: "INR",
@@ -1377,7 +1378,7 @@ export class WebClientProvider {
         console.log(order);
         console.log("pallavi_order");
       });
-   
+
     }
   */
 

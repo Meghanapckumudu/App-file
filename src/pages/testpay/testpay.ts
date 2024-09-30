@@ -1,6 +1,6 @@
 import { DataProvider } from '../../providers/data/data';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController } from '@ionic/angular';
 import { WebClientProvider } from '../../providers/web-client/web-client';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { RandomAPI } from './randomApi';
@@ -27,7 +27,7 @@ interface Cordova {
 
 
 
-@IonicPage()
+
 @Component({
   selector: 'page-testpay',
   templateUrl: 'testpay.html',
@@ -119,7 +119,7 @@ export class TestpayPage {
         order_id: "order_FHB0S5Dg75uoIC",//obj.rpay_okey,
         name: "HDFC VAS", //this.scheme.store_name,
         notes: {
-          transaction_id: "215000083-4"//obj.rpay_transid 
+          transaction_id: "215000083-4"//obj.rpay_transid
         },
         prefill: {
           email: 'pallavi.s.shettigar@gmail.com',
@@ -331,7 +331,7 @@ export class TestpayPage {
           //     " <input type=\"hidden\" custom=\"Hidden Element\" name=\"hidden\"> " + ""
           //     " </form> "
              // " <script type=\"text/javascript\">document.getElementById(\"MyForm\").submit();</script> ";
-         
+
           pageContent = "<button id=\"rzp-button1\">Pay</button> " +
             " <script type=\"text/javascript\" src=\"" + this.data.razorpay_posturl + "\"></script>" +
             " <script type=\"text/javascript\"> " +
@@ -349,16 +349,16 @@ export class TestpayPage {
             " \"email\": \"" + "pallavi.s.shettigar@gmail.com" + "\"," +
             " \"contact\": \"" + "9731552442" + "\", "
             " }, " +
-            " \"notes\": { " + 
+            " \"notes\": { " +
             " \"address\": \"" + "Razorpay Corporate Office" + "\"" +
-            " },  \"theme\": { " + 
-            " \"color\": \"" + "#F37254" + "\" } " + 
-            "};" + 
-            " var rzp1 = new Razorpay(options); " + 
-            " document.getElementById('rzp-button1').onclick = function(e){ " + 
+            " },  \"theme\": { " +
+            " \"color\": \"" + "#F37254" + "\" } " +
+            "};" +
+            " var rzp1 = new Razorpay(options); " +
+            " document.getElementById('rzp-button1').onclick = function(e){ " +
             " rzp1.open(); " +
             " e.preventDefault(); " +
-            " } " + 
+            " } " +
             //"document.getElementById(\"rzp-button1\").click();"
             //" document.getElementById('rzp-button1').submit(); " +
             //" document.getElementById(\"MyForm\").rzp-button1(); " +
@@ -428,7 +428,7 @@ export class TestpayPage {
             order_id: "order_FHBebicY8g9OKr",//obj.rpay_okey,
             name: "HDFC VAS", //this.scheme.store_name,
             notes: {
-              transaction_id: "215000083-4"//obj.rpay_transid 
+              transaction_id: "215000083-4"//obj.rpay_transid
             },
             prefill: {
               email: 'pallavi.s.shettigar@gmail.com',

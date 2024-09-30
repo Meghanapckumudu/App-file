@@ -1,13 +1,9 @@
-import { DataProvider } from '../../providers/data/data';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
-import { WebClientProvider } from '../../providers/web-client/web-client';
-import { Geolocation } from '@ionic-native/geolocation';
-import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
+import { NativeGeocoderOptions, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 
 
 
-@IonicPage()
+
 @Component({
    selector: 'page-geoloc',
    templateUrl: 'geoloc.html',
@@ -34,8 +30,8 @@ export class geolocPage {
    getGeolocation(){
       this.geolocation.getCurrentPosition().then((resp) => {
         this.geoLatitude = resp.coords.latitude;
-        this.geoLongitude = resp.coords.longitude; 
-        this.geoAccuracy = resp.coords.accuracy; 
+        this.geoLongitude = resp.coords.longitude;
+        this.geoAccuracy = resp.coords.accuracy;
         this.getGeoencoder(this.geoLatitude,this.geoLongitude);
        }).catch((error) => {
          alert('Error getting location'+ JSON.stringify(error));
@@ -77,7 +73,7 @@ export class geolocPage {
    this.watchLocationUpdates = this.geolocation.watchPosition();
    this.watchLocationUpdates.subscribe((resp) => {
      this.geoLatitude = resp.coords.latitude;
-     this.geoLongitude = resp.coords.longitude; 
+     this.geoLongitude = resp.coords.longitude;
      this.getGeoencoder(this.geoLatitude,this.geoLongitude);
    });
  }
@@ -87,7 +83,7 @@ export class geolocPage {
    this.isWatching = false;
    this.watchLocationUpdates.unsubscribe();
  }
- 
+
 
 
 }

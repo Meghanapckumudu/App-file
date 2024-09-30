@@ -3,11 +3,11 @@ page-customer-profile {
 /*.item-ios, .item-md, .item-wp{
 	color:#D67B63 !important;
 	}
-	
+
 .item-input-has-focus .item-inner{
 	border-bottom:2px solid #D67B63 !important;
 }
-	
+
 .text-input-wp {
     margin: 13px 8px;
     padding: 0 8px;
@@ -84,8 +84,8 @@ ion-label[fixed], .item-datetime .label{
     position: relative;
     text-align: center;
   }
-  
-  ion-avatar img{	
+
+  ion-avatar img{
 	height:80px;
 	width:80px;
 	border-radius:100px;
@@ -93,7 +93,7 @@ ion-label[fixed], .item-datetime .label{
 	box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.3);
   }
 
-.card-title {    
+.card-title {
     font-size:18px;
     width: 100%;
     font-weight: normal;
@@ -101,26 +101,26 @@ ion-label[fixed], .item-datetime .label{
   }
 
   .card-subtitle {
-    font-size: 1.0em;    
+    font-size: 1.0em;
     width: 100%;
     color: #D67B63;
   }
   ion-avatar{
-	width:100%;	
-	text-align:center;	
+	width:100%;
+	text-align:center;
 	margin:20px 0px;
   }
-	
+
 	.bar-buttons-ios, .bar-buttons-md, .bar-buttons-wp{
 	 position:absolute;
-	 right:0px;	 
+	 right:0px;
 	 }
-	 
+
 	 .button-md, .button-ios, .button-wp{
 	   text-transform:capitalize;
-	   font-weight:normal;	   
+	   font-weight:normal;
 	 }
-	 
+
 .card-ios, .card-md, .card-wp{
 	margin:0px;
 	width:100%;
@@ -128,27 +128,27 @@ ion-label[fixed], .item-datetime .label{
 	box-shadow:none;
 	border-bottom:1px solid #F8EEE0;
 	padding:30px 0px;
-	}	 
-	
+	}
+
 */
 
 
-.home-bg{ 
+.home-bg{
  background:url(../assets/imgs/bg2.jpg) no-repeat center center fixed;
 -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; 
-  
+  background-size: cover;
+
 	/*background:#162340; */
 	padding:16px;
-	
+
 }
-	
-	
-.grid{margin:60% 0px 0px 0px}	
-	
-.col {    
+
+
+.grid{margin:60% 0px 0px 0px}
+
+.col {
     text-align:center;
 }
 
@@ -160,7 +160,7 @@ ion-label[fixed], .item-datetime .label{
 
 .grid .label{
 	position: absolute;
-    white-space: normal; 
+    white-space: normal;
 	text-transform:capitalize;
 	font-weight:400;
 	margin-top: 50%;
@@ -172,7 +172,7 @@ ion-label[fixed], .item-datetime .label{
     margin-top: -40px;
 }
 
-.grid .button{background:$misc-bg;box-shadow:none;color:cust_clr1;border:1px solid $misc-bg;}	
-	 
+.grid .button{background:$misc-bg;box-shadow:none;color:cust_clr1;border:1px solid $misc-bg;}
+
 
 }

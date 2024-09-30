@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams, Platform } from '@ionic/angular';
 import { DataProvider } from '../../providers/data/data';
 import { WebClientProvider } from '../../providers/web-client/web-client';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
 //import { PreviewAnyFile } from '';
 
 //import { FileOpener } from '@ionic-native/file-opener/ngx';
@@ -15,7 +14,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-benifits',
   templateUrl: 'benifits.html',
@@ -55,7 +54,7 @@ export class BenifitsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad BenifitsPage');
   }
-  
+
   subscription: any;
   ionViewDidLoadEnter() {
     this.subscription = this.plt.backButton.subscribe(() => {
@@ -86,7 +85,7 @@ export class BenifitsPage {
        .then(() => console.log('File is opened'))
        .catch(e => console.log('Error openening file', e));
    }
- 
+
    DisplayPdf1(scheme_name){
      const options: DocumentViewerOptions = {
        title: 'My PDF'
@@ -114,7 +113,7 @@ export class BenifitsPage {
     // const browser = this.iab.create(urlNew, "_blank", options);
     const browser = this.iab.create(MyPdf, "_blank", "hidden=no,location=no");
     console.log("On create")
-    browser.show() 
+    browser.show()
 
   }
   DisplayPdf_new1(scheme_name) {

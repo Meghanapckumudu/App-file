@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from '@ionic/angular';
 import { SchemeDetailPage } from '../scheme-detail/scheme-detail';
 import { WebClientProvider } from '../../providers/web-client/web-client';
 import { DataProvider } from '../../providers/data/data';
@@ -11,7 +11,6 @@ import { DataProvider } from '../../providers/data/data';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html',
@@ -58,12 +57,12 @@ export class SearchPage {
 
 
 
-  goToSchemeDetailPage(memberCode) {
+  goToSchemeDetailPage(memberCode:any) {
     this.navCtrl.push(SchemeDetailPage, {
       memberCode: memberCode
     });
   }
-  searchByKeyword(e) {
+  searchByKeyword(e:any) {
     console.log("pallavi")
     console.log(this.searchTerm)
     this.

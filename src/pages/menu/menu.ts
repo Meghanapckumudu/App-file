@@ -1,28 +1,24 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Nav, App, AlertController } from 'ionic-angular';
-import { CollectionReportPage } from '../collection-report/collection-report';
-import { SearchPage } from '../search/search';
-import { TabsPage } from '../tabs/tabs';
+import { AlertController, App, Nav, NavController } from '@ionic/angular';
 import { LoginPage } from '../login/login';
+import { SearchPage } from '../search/search';
 import { SettingsPage } from '../settings/settings';
+import { TabsPage } from '../tabs/tabs';
 import { TestpayPage } from '../testpay/testpay';
 
+import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { DashboardPage } from '../dashboard/dashboard';
-import { JoinChitPage } from '../join-chit/join-chit';
-import { ChitListPage } from '../chit-list/chit-list';
 import { DataProvider } from '../../providers/data/data';
-import { MyProfilePage } from '../my-profile/my-profile';
-import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { ChitListPage } from '../chit-list/chit-list';
 import { geolocPage } from '../geoloc/geoloc';
-import { memberupdatePage } from '../member-update/member-update';
+import { JmshomePage } from '../jmshome/jmshome';
 import { membersendsmsPage } from '../member-sendsms/member-sendsms';
+import { memberupdatePage } from '../member-update/member-update';
+import { MyProfilePage } from '../my-profile/my-profile';
 import { PushnotePage } from '../pushnote/pushnote';
 import { TesteasypayPage } from '../testeasypay/testeasypay';
-import { Platform } from 'ionic-angular';
-import { Location } from '@angular/common';
-import { JmshomePage } from '../jmshome/jmshome';
 //import {InAppBrowser} from '@ionic-native/in-app-browser'
 //import {Http, RequestOptions, ResponseContentType, URLSearchParams} from '@angular/http';
 
@@ -44,7 +40,7 @@ export interface PageInterface {
   icon: string;
 }
 
-@IonicPage()
+
 @Component({
   selector: 'page-menu',
   templateUrl: 'menu.html',
@@ -120,7 +116,7 @@ export class MenuPage {
       this.nav.getActiveChildNav().select(page.index);
 
     } else {
-      // Tabs are not active, so reset the root page 
+      // Tabs are not active, so reset the root page
       // In this case: moving to or from SpecialPage
       console.log("page.pageName -2 " + page.pageName)
       this.nav.setRoot(page.pageName, params);
@@ -284,7 +280,7 @@ export class MenuPage {
       });
   }?
 
-  
+
   orderId(){
     var url = "https://api.razorpay.com/v1/orders";
     var data = {
@@ -296,7 +292,7 @@ export class MenuPage {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Authorization':'rzp_test_yMJKzjz8mTggSd:QUnwF3gijdJTCIRVu55gVbA7',// 'Basic cnpwX3Rlc3RfeU1KS3pqejhtVGdnU2Q6UVVud0YzZ2lqZEpUQ0lSVnU1NWdWYkE3',//
-      'Access-Control-Allow-Origin': 'localhost:8100', 
+      'Access-Control-Allow-Origin': 'localhost:8100',
       'Access-Control-Allow-Methods': 'POST',
       'Access-Control-Allow-Headers': 'Content-Type'
     }};
@@ -304,14 +300,14 @@ export class MenuPage {
     this.http.post(url, data, head).subscribe(
       res => {
         console.log('res: ', res);
-        
+
       },
       err => {
         console.log('ERROR: ', err);
-       
+
       }
     );
-    
+
 
 }
 

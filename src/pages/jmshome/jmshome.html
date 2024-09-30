@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-  
+
 <!-- <ion-header>
   <ion-navbar color="navigation">
     <ion-buttons start>
@@ -19,7 +19,7 @@
 
 <ion-header>
   <ion-navbar color="navigation">
-    <ion-buttons slot="start" style="display: flex; align-items: center; justify-content: space-between;"> 
+    <ion-buttons slot="start" style="display: flex; align-items: center; justify-content: space-between;">
       <!-- Menu toggle button on the left -->
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
@@ -27,8 +27,8 @@
       <div>
         <img alt="logo" id="header_logo" height="50" width="50" style="margin-left: 10px; vertical-align: middle;" src="assets/imgs/jms1.png">
       </div>
-    
-      
+
+
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -39,7 +39,7 @@
 
 
 <ion-content class="custom-background">
-    
+
   <div class="image-slide">
     <ion-slides pager="true" class="custom-slider">
         <ion-slide>
@@ -95,9 +95,9 @@
       Today's Price
     </div>
   </div>
-  
+
   <div class="container">
-   
+
     <ion-list *ngFor="let each of rateslist" no-lines no-padding no-margin class="custom-list">
       <!-- GOLD Metal Box -->
       <ion-label *ngIf="each.metal == 'GOLD'" class="custom-label-gold">
@@ -110,7 +110,7 @@
           </div>
         </div>
       </ion-label>
-  
+
       <!-- Other Metals Box -->
       <ion-label *ngIf="each.metal != 'GOLD'" class="custom-label-other">
         <div class="box">
@@ -121,10 +121,10 @@
             <span class="rate-text colorbgtxt">Rs.{{each.rate}}/-</span>
           </div>
         </div>
-      </ion-label> 
+      </ion-label>
     </ion-list>
   </div>
-  
+
 
 
   <div class="todays-price-wrapper">
@@ -138,7 +138,7 @@
    <div class="custom-container">
     <!-- <h2 class="custom-title">Today's Price</h2> -->
     <div class="custom-grid-container">
-      
+
       <!-- Card 1: My Plans -->
       <div class="custom-card" *ngIf="data.userLoginType == 'customer'" (click)="goToMyChits()">
         <img src="assets/imgs/newicons/My Plan.svg" alt="My Plans Icon" class="custom-icon">
@@ -146,7 +146,7 @@
       </div>
 
       <!-- Card 2: New Plan -->
-      <div class="custom-card"  *ngIf="data.userLoginType !== 'customer'"  (click)="goToMyChits()">       
+      <div class="custom-card"  *ngIf="data.userLoginType !== 'customer'"  (click)="goToMyChits()">
          <img src="assets/imgs/newicons/My Plan.svg" alt="New Plan Icon" class="custom-icon">
         <span class="custom-label">Payments</span>
       </div>
@@ -161,28 +161,28 @@
         <img src="assets/imgs/newicons/Offers.svg" alt="Offers Icon" class="custom-icon">
         <span class="custom-label">Offers</span>
       </div>
-  
+
       <!-- Card 4: Benefits -->
       <div class="custom-card"  (click)="Benifitspage()">
         <img src="assets/imgs/newicons/Benefits.svg" alt="Benefits Icon" class="custom-icon">
         <span class="custom-label">Benefits</span>
       </div>
-  
+
       <!-- Card 5: How to Use -->
       <div class="custom-card"(click)="howtouse()">
         <img src="assets/imgs/newicons/Guide.svg" alt="How to Use Icon" class="custom-icon">
         <span class="custom-label">How to Use</span>
       </div>
-  
+
       <!-- Card 6: FAQ -->
       <div class="custom-card" (click)="faq()">
         <img src="assets/imgs/newicons/FAQ.svg" alt="FAQ Icon" class="custom-icon">
         <span class="custom-label">FAQ</span>
       </div>
-  
+
     </div>
   </div>
-  
+
 
   <div class="follow-us">
     <button class="follow-us-btn" (click)="followUs()">
@@ -197,13 +197,13 @@
       </button>
       <button class="social-icon" (click)="yt()">
         <img src="assets/imgs/newicons/Youtube.svg" alt="YouTube" />
-     </button>     
+     </button>
       <button class="social-icon" (click)="insta()">
         <img src="assets/imgs/newicons/Instagram 1.svg" alt="Instagram" />
       </button>
     </div>
   </div>
-  
+
 
 
 </ion-content>

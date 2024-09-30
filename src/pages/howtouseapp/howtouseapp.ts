@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
-import { WebClientProvider } from '../../providers/web-client/web-client';
-import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { NavController, NavParams, Platform } from '@ionic/angular';
 import { DataProvider } from '../../providers/data/data';
+import { WebClientProvider } from '../../providers/web-client/web-client';
 //import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 /**
  * Generated class for the HowtouseappPage page.
@@ -11,7 +10,7 @@ import { DataProvider } from '../../providers/data/data';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-howtouseapp',
   templateUrl: 'howtouseapp.html',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ModalController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController, Platform } from '@ionic/angular';
 import { PaymentSuccessPage } from '../payment-success/payment-success';
 import { WebClientProvider } from '../../providers/web-client/web-client';
 import { DataProvider } from '../../providers/data/data';
@@ -22,7 +22,7 @@ declare var RazorpayCheckout: any;
 //var inAppBrowserRef;
 var is_Email_Valid: Boolean = false;
 
-@IonicPage()
+
 @Component({
   selector: 'page-scheme-detail',
   templateUrl: 'scheme-detail.html',
@@ -77,7 +77,7 @@ export class SchemeDetailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http1: HttpClient,
     public alertCtrl: AlertController, public iab: InAppBrowser, private nativeGeocoder: NativeGeocoder,
-    public data: DataProvider, public modalCtrl: ModalController, 
+    public data: DataProvider, public modalCtrl: ModalController,
     private geolocation: Geolocation, private plt: Platform,
     public apiClient: WebClientProvider,private sanitizer: DomSanitizer) {
     this.scheme = {};
@@ -112,7 +112,7 @@ export class SchemeDetailPage {
       data.esypay_callback = this.pgateway.callbackurl;
       data.esypay_type = this.pgateway.merchant_name;
 
-      // data.razorpay_std : 0 then standerd 
+      // data.razorpay_std : 0 then standerd
       // data.razorpay_std : 1 then url call
       // data.razorpay_std : 2 then easypay
 
@@ -123,14 +123,14 @@ export class SchemeDetailPage {
       console.log("razorpay_url :" + data.razorpay_url)
     });
     console.log("grc",this.groupCode);
-    
+
     this.apiClient.schemeDetail(this.groupCode).then(result => {
       this.scheme.g_balance = 0;
       this.scheme = result[0];
       console.log("sche",result[0]);
       console.log(this.scheme);
       this.GroupMemberNo = this.scheme.mgroup + " - " + this.scheme.member_no;
-    
+
       this.scheme.initial = "mr";
       this.scheme.mode = "";
       this.scheme.PayInstall = 1;
@@ -142,7 +142,7 @@ export class SchemeDetailPage {
       } else {
         this.isflexigroup = false
       }
-      /*  this.scheme.mode = "0"; 
+      /*  this.scheme.mode = "0";
       if (this.data.userLoginType == 'customer') {
         this.scheme.mode = "6";
       }*/
@@ -174,7 +174,7 @@ export class SchemeDetailPage {
         this.scheme.paidInsatllments = this.scheme.amountPaid / this.scheme.scheme_amount;
         this.scheme.currentInstalment = this.scheme.paidInsatllments + 1;
         this.scheme.pendingInstalment = this.scheme.no_inst - this.scheme.paidInsatllments;
-      } 
+      }
 
       this.scheme.schemeToPayAmount = this.scheme.scheme_amount;
       if (this.adjustedscheme == true) {
@@ -228,7 +228,7 @@ export class SchemeDetailPage {
     this.GetLocation_Onlyccords();
 
   }
-  
+
 
 
   ionViewDidLoad() {
@@ -286,7 +286,7 @@ export class SchemeDetailPage {
       }
       this.installmentdetails = this.scheme.no_inst  + " / " +  this.scheme.pendingInstalment  + " / " +  this.scheme.dueInstallNo +  " / " + this.scheme.currentInstalment;
       //this.installmentdetails = this.scheme.currentInstalment;  // this line only for mehat's anand jewellers
-    
+
       if ( this.data.userLoginType!='agent' ) {
         console.log("Online")
         this.scheme.mode="6";
@@ -300,16 +300,16 @@ export class SchemeDetailPage {
       location: 'yes', // show address bar
       toolbar: 'yes' // show toolbar
     });
-    
+
     const transactionId = epay_obj.transaction_id;
     const url1: string = "https://us-central1-kumuduapi-f76e4.cloudfunctions.net/app/phonepe-callback-details";
 
-    const requestBody = { transactionId: transactionId }; // Prepare the request body    
+    const requestBody = { transactionId: transactionId }; // Prepare the request body
     let attempts = 0;
     const maxAttempts: number = 20;
     const timeout: number = 4000;
     console.log("reqbody",requestBody);
-    
+
     const checkApiResponse = () => {
       attempts++;
 
@@ -324,7 +324,7 @@ export class SchemeDetailPage {
             const voucherNoJSON = JSON.stringify(filteredResponse);
 
             console.log("amount",amount);
-            
+
 
            // this.navCtrl.push(PaymentSuccessPage, { 'voucherNo': voucherNoJSON });
             browser.close();
@@ -352,7 +352,7 @@ export class SchemeDetailPage {
     };
 
     checkApiResponse();
-   
+
   }
 
   goldCollected = 0;
@@ -640,7 +640,7 @@ export class SchemeDetailPage {
           if (this.data.razorpay_std == "2") {
             // Easy Pay Flow
             // step - 1 : Generate Unique Number
-            // step - 2 : Create Encrypt And Call URL 
+            // step - 2 : Create Encrypt And Call URL
             // step - 3 : Catch Encrypted Response
             // step - 4 : As per Response Payment Entry
 
@@ -677,7 +677,7 @@ export class SchemeDetailPage {
                 console.log(epay_obj.store_id);
                 console.log(epay_obj.epay_memId);
                 var getEpayEncrypt;
-                // step - 2 : Create Encrypt And Call URL 
+                // step - 2 : Create Encrypt And Call URL
                 this.apiClient.getEpayEncrypt(epay_obj).then(result => {
                   console.log("calling Function");
                   getEpayEncrypt = result;
@@ -838,10 +838,10 @@ export class SchemeDetailPage {
               }
             });
           }
-          //phone pe pg 
+          //phone pe pg
           else if(this.data.razorpay_std == "3") {
            console.log("standard 3");
-           
+
            let rpay_obj = {
             rpay_amount: (this.scheme.schemeToPayAmount) * 100 + "", //15-07-2020 removed 100 Multiplies because hdfc uses direct amount
             rpay_currency: "INR",
@@ -851,7 +851,7 @@ export class SchemeDetailPage {
             rpay_KeySecret: this.data.razorpay_key_secret
           };
           console.log("rpay_obj",rpay_obj);
-          
+
           this.apiClient.orderId_Generate(rpay_obj).then(result => {  //order id generate
             // this.orderIdDet = result;
             console.log("Order_Id_Created",result);
@@ -861,7 +861,7 @@ export class SchemeDetailPage {
             this.apiClient.getPaymentGatewayReference().then(result => {  //order id generate
               let epayRefId = result;
               console.log("epayRefId :" + epayRefId)
-        
+
               if (epayRefId != "" || epayRefId != undefined) {
                 let epay_obj = {
                   epay_cid: this.data.esypay_merchant_id + "",
@@ -889,15 +889,15 @@ export class SchemeDetailPage {
                 console.log(epay_obj.store_id);
                 console.log(epay_obj.epay_memId);
                 var getEpayEncrypt;
-                // step - 2 : Create Encrypt And Call URL 
+                // step - 2 : Create Encrypt And Call URL
                 this.apiClient.getEpayEncrypt(epay_obj).then(result => {
                   console.log("calling Function");
                   getEpayEncrypt = result;
-                 
+
                     //const url = 'http://127.0.0.1:5001/kumuduapi-f76e4/us-central1/app/phonepe-new-payment'; // Replace with your actual server address
-                    
+
                     const url = 'https://us-central1-kumuduapi-f76e4.cloudfunctions.net/app/phonepe-new-payment'; // Replace with your actual server address
-                    
+
                     this.http1.post(url,epay_obj).subscribe(
                       (response: any) => {
 
@@ -911,19 +911,19 @@ export class SchemeDetailPage {
                               location: 'yes', // show address bar
                               toolbar: 'yes' // show toolbar
                             });
-                            
+
                             const transactionId = epay_obj.transaction_id;
                             const url1: string = "https://us-central1-kumuduapi-f76e4.cloudfunctions.net/app/phonepe-callback-details";
-                        
-                            const requestBody = { transactionId: transactionId }; // Prepare the request body    
+
+                            const requestBody = { transactionId: transactionId }; // Prepare the request body
                             let attempts = 0;
                             const maxAttempts: number = 30;
                             const timeout: number = 4000;
                             console.log("reqbody",requestBody);
-                            
+
                             const checkApiResponse = () => {
                               attempts++;
-                        
+
                               this.http1.post(url1, requestBody).subscribe(
                                 (response: any) => {
                                   console.log('API Response:', response);
@@ -933,7 +933,7 @@ export class SchemeDetailPage {
                                     const { amount, checksum, transactionId, providerReferenceId, code } = response[0];
                                     const filteredResponse = { amount, transactionId, providerReferenceId, code };
                                     const voucherNoJSON = JSON.stringify(filteredResponse);
-                        
+
                                     console.log("amount",amount);
                                     obj.pay_sign = checksum;
                                     obj.order_Iid = this.rozar_orderId;
@@ -962,7 +962,7 @@ export class SchemeDetailPage {
                                           obj.latitude = this.geoLatitude + "";
                                           obj.longitude = this.geoLongitude + "";
                                         } catch (e) {
-                          
+
                                         }
                                         try {
                                           this.geo_address2 = "";
@@ -972,12 +972,12 @@ export class SchemeDetailPage {
                                             console.log("geoadd:" + this.geo_address1)
                                             console.log("geoadd2:" + this.geo_address2)
                                             console.log("geoplace:" + this.geo_place)
-                          
+
                                             obj.location = this.geo_address2 + "";
                                           });
                                           //this.getGeoencoder(obj.latitude, obj.longitude)
                                         } catch (e) {
-                          
+
                                         }
                                         console.log("GeoAddress:" + this.geo_address2)
                                         obj['location'] = this.geo_address2
@@ -1001,7 +1001,7 @@ export class SchemeDetailPage {
                                       }
                                     });
 
-                                    
+
                                    // this.navCtrl.push(PaymentSuccessPage, { 'voucherNo': voucherNoJSON });
                                     browser.close();
                                   } else if (attempts >= maxAttempts) {
@@ -1014,7 +1014,7 @@ export class SchemeDetailPage {
                                 },
                                 (error) => {
                                   console.error('API Error:', error);
-                        
+
                                   // If maximum attempts reached, close the browser
                                   if (attempts >= maxAttempts) {
                                     console.log('Max attempts reached. Closing the browser.');
@@ -1026,15 +1026,15 @@ export class SchemeDetailPage {
                                 }
                               );
                             };
-                        
+
                             checkApiResponse();
-                           
-                          
+
+
 
                         }
 
 
-                   
+
                     },
                       (error) => {
                         console.error('Error sending data:', error);
@@ -1134,7 +1134,7 @@ export class SchemeDetailPage {
                     } else {  // verification of signature true
                       pay_newId = det.res_pay_id
 
-                      //verifySign         
+                      //verifySign
                       if (pay_newId == null || pay_newId == "" || pay_newId == 0 || pay_newId == "0" || pay_newId == " ") { //check for payment id length
                         console.log("unsuccessfull");
                         console.log("payy_newId : " + pay_newId);
@@ -1377,7 +1377,7 @@ onAmountChange() {
       } else {
         this.scheme.g_balance = 0;
       }
-    
+
     }
   }
 
@@ -1398,7 +1398,7 @@ onAmountChange() {
     } else {
       this.scheme.g_balance = 0;
     }
-  
+
   }
 
   print(obj) {
@@ -1780,17 +1780,17 @@ onAmountChange() {
 
       if (this.data.razorpay_std == "0") {
         console.log("o razor pay if");
-      
+
         if (this.scheme.email === undefined) {
           this.scheme.email = this.store_email_for_pg;
         }
         if (this.scheme.mobile === undefined) {
           this.scheme.mobile = "0";
         }
-      
+
         let isBackPress: Boolean = true;
         this.isAuthorize = false;
-      
+
         const pageContent = `
         <form id="MyForm" method="POST" action="https://api.razorpay.com/v1/checkout/embedded">
           <input type="hidden" name="key_id" value="${this.data.razorpay_key_id}">
@@ -1807,45 +1807,45 @@ onAmountChange() {
         <script type="text/javascript">
           document.getElementById("MyForm").submit();
         </script>`;
-      
+
       const pageContentEncoded = encodeURIComponent(pageContent);
       const pageContentUrl = `data:text/html;charset=utf-8,${pageContentEncoded}`;
       const theOtherUrl = "https://kumuduapps.in:8443/hdfcRpayResponse.jsp";
         let browserRef: any = this.iab.create(pageContentUrl, "_self", "hidden=no,location=no");
-      
+
         browserRef.on('loadstart').subscribe((event) => {
           console.log("Load Start: " + event.url);
-      
+
           // Log the URL to understand what is being loaded
           console.log("Event URL: " + event.url);
-      
+
           if (event.url.includes("paysuccess.jsp")) {
             console.log("Payment Success URL Detected: " + event.url);
-      
+
             let Myurl = event.url;
             let regex = /[?&]([^=#]+)=([^&#]*)/g, url = Myurl, params: any = {}, match;
             while (match = regex.exec(url)) {
               params[match[1]] = match[2];
             }
-      
+
             console.log("Payment ID: " + params.razorpay_payment_id);
             console.log("Order ID: " + params.razorpay_order_id);
             console.log("Signature: " + params.razorpay_signature);
-      
+
             this.rz_pay_res_id = params.razorpay_payment_id;
             this.rz_pay_res_ordid = params.razorpay_order_id;
             this.rz_pay_res_signid = params.razorpay_signature;
-      
+
             const pay_res1 = {
               res_pay_id: params.razorpay_payment_id,
               res_ord_id: params.razorpay_order_id,
               res_sign: params.razorpay_signature
             };
-      
+
             const res: string = params.razorpay_payment_id + "|" + params.razorpay_signature;
             browserRef.close();
             resolve(res);
-      
+
           } else {
             console.warn("Unexpected URL: " + event.url);
             // alert("Unexpected URL detected during payment processing. Please check the console for details."+ event.url);
@@ -1856,15 +1856,15 @@ onAmountChange() {
           browserRef.close();
           reject("0");
         });
-      
+
         browserRef.on('loadstop').subscribe((event) => {
           console.log("Load Stop: " + event.url);
-      
+
           if (event.url.includes("authorized")) {
             this.isAuthorize = true;
             isBackPress = false;
             console.log("Payment Authorized");
-      
+
           } else if (event.url.includes("status=failed")) {
             this.isAuthorize = false;
             isBackPress = false;
@@ -1873,7 +1873,7 @@ onAmountChange() {
             browserRef.close();
             resolve("0");
             reject("0");
-      
+
           } else if (event.url === theOtherUrl) {
             console.log("Callback URL matched: " + event.url);
           }
@@ -1883,7 +1883,7 @@ onAmountChange() {
           browserRef.close();
           reject("0");
         });
-      
+
         browserRef.on("exit").subscribe((e) => {
           if (isBackPress) {
             console.log("Browser Closed by User");
@@ -1897,10 +1897,10 @@ onAmountChange() {
           reject("0");
         });
       }
-      
-      
-      
-      
+
+
+
+
       else {
 
 
@@ -1969,7 +1969,7 @@ onAmountChange() {
       } //If condition Closes
 
 
-      
+
     });
   }
 

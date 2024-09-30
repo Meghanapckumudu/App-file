@@ -2,13 +2,13 @@ page-dashboard {
 
 .card-ios, .card-md, .card-wp {
 	margin:0px;
-	box-shadow:none;	
+	box-shadow:none;
 	border-radius: 10px;
 	width:100%;
-	background : $misc-bg;	
+	background : $misc-bg;
 	border:1px solid $misc-bg;
 	}
-	
+
 .card-header-ios, .card-header-md, .card-header-wp{
 	color: $cust_clr;
 	text-align:left;
@@ -17,7 +17,7 @@ page-dashboard {
 }
 
 .card-content-ios, .card-content-md, .card-content-wp {
-	padding-top:10px !important;    
+	padding-top:10px !important;
     font-size: 1.4rem;
     line-height: 1.5;
 	background: $btn_bc;// #F8EEE0; // $btn_bc;
@@ -28,17 +28,17 @@ page-dashboard {
 	border:1px solid $misc-bg !important; //#F8EEE0
 	color: $misc-bg ; //$cust_clr ; // #D67B63;//#096b00;//#D67B63;
 	border-radius: 10px !important;
-	
+
 }
 
 .image-slide{
-	margin-top: 50px;	
+	margin-top: 50px;
 	height:200px;
 	background:white;
 }
 
 .image-card{
-	margin-top: 50px;	
+	margin-top: 50px;
 	height:150px;
 	width: 150px;
 	background:white;

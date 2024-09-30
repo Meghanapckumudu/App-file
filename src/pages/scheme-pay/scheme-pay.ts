@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from '@ionic/angular';
 import { PaymentSuccessPage } from '../payment-success/payment-success';
 
 /**
@@ -9,7 +9,7 @@ import { PaymentSuccessPage } from '../payment-success/payment-success';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-scheme-pay',
   templateUrl: 'scheme-pay.html',

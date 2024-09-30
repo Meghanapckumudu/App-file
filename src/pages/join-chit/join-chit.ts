@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
+import { AlertController, NavController, NavParams, Platform } from '@ionic/angular';
 //import { PaymentSuccessPage } from '../payment-success/payment-success';
-import { WebClientProvider } from '../../providers/web-client/web-client';
-import { JoinChitSuccessPage } from '../join-chit-success/join-chit-success';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { NativeGeocoderOptions, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 import { Storage } from '@ionic/storage';
 import { DataProvider } from '../../providers/data/data';
-import { Geolocation } from '@ionic-native/geolocation';
-import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
+import { WebClientProvider } from '../../providers/web-client/web-client';
+import { JoinChitSuccessPage } from '../join-chit-success/join-chit-success';
 //import moment from 'moment';
 
 

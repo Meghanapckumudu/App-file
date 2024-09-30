@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
+import { IonicModule, IonicPageModule } from '@ionic/angular';
 import { UserLedgerPage } from './user-ledger';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,8 @@ import { UserLedgerPage } from './user-ledger';
   ],
   imports: [
     IonicPageModule.forChild(UserLedgerPage),
+    IonicModule,
+    CommonModule
   ],
 })
 export class UserLedgerPageModule {}

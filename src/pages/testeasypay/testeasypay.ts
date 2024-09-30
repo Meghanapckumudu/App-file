@@ -1,6 +1,6 @@
 import { DataProvider } from '../../providers/data/data';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController } from '@ionic/angular';
 import { WebClientProvider } from '../../providers/web-client/web-client';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
@@ -14,7 +14,7 @@ import { convertDataToISO } from 'ionic-angular/umd/util/datetime-util';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-testeasypay',
   templateUrl: 'testeasypay.html',
@@ -148,7 +148,7 @@ export class TesteasypayPage {
                   }]
                 });
                 alert.present();
-              
+
               } else {
                 let alert = this.alertCtrl.create({
                   title: 'Payment Failed',

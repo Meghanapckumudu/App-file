@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ModalController, Platform } from 'ionic-angular';
+import { AlertController, ModalController, NavController, NavParams, Platform } from '@ionic/angular';
 import { WebClientProvider } from '../../providers/web-client/web-client';
 // import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
-import { DashboardPage } from '../dashboard/dashboard';
 import { DataProvider } from '../../providers/data/data';
-import { Geolocation } from '@ionic-native/geolocation';
 //import { Paytm } from '@ionic-native/paytm';
 
 /**
@@ -14,7 +12,7 @@ import { Geolocation } from '@ionic-native/geolocation';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-member-sendsms',
   templateUrl: 'member-sendsms.html',
