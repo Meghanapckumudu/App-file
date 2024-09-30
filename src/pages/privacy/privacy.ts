@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from '@ionic/angular';
+import { Component } from "@angular/core";
+import { NavController, NavParams, ViewController } from "@ionic/angular";
 
 /**
  * Generated class for the PrivacyPage page.
@@ -8,18 +8,19 @@ import { IonicPage, NavController, NavParams, ViewController } from '@ionic/angu
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-privacy',
-  templateUrl: 'privacy.html',
+  selector: "page-privacy",
+  templateUrl: "privacy.html",
 })
 export class PrivacyPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PrivacyPage');
+    console.log("ionViewDidLoad PrivacyPage");
   }
 
   dismiss() {

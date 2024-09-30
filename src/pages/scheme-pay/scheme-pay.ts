@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from '@ionic/angular';
-import { PaymentSuccessPage } from '../payment-success/payment-success';
+import { Component } from "@angular/core";
+import { NavController, NavParams, Platform } from "@ionic/angular";
+import { PaymentSuccessPage } from "../payment-success/payment-success";
 
 /**
  * Generated class for the SchemePayPage page.
@@ -9,27 +9,26 @@ import { PaymentSuccessPage } from '../payment-success/payment-success';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-scheme-pay',
-  templateUrl: 'scheme-pay.html',
+  selector: "page-scheme-pay",
+  templateUrl: "scheme-pay.html",
 })
 export class SchemePayPage {
-
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     private plt: Platform,
-    public navParams: NavParams) {
-  }
+    public navParams: NavParams
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SchemePayPage');
+    console.log("ionViewDidLoad SchemePayPage");
   }
   subscription: any;
   ionViewDidEnter() {
-    console.log('ionViewDidLoad SchemePayPage');
+    console.log("ionViewDidLoad SchemePayPage");
     this.subscription = this.plt.backButton.subscribe(() => {
-      console.log('Back press handler!');
-      console.log('Show Exit Alert!');
+      console.log("Back press handler!");
+      console.log("Show Exit Alert!");
       let Mypages: any = SchemePayPage;
       this.navCtrl.pop(Mypages);
     });
@@ -41,6 +40,5 @@ export class SchemePayPage {
 
   goToPaymentSuccessPage() {
     this.navCtrl.push(PaymentSuccessPage);
-
   }
 }

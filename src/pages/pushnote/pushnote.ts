@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from '@ionic/angular';
+import { Component } from "@angular/core";
+import { NavController, NavParams } from "@ionic/angular";
 //import { FCM } from '@ionic-native/fcm';
-import { Platform } from '@ionic/angular';
-import { Observable } from 'rxjs-compat';
-import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
+import { Platform } from "@ionic/angular";
+import { Observable } from "rxjs-compat";
+import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
 //import { map } from 'rxjs-compat/operator';
 
 /**
@@ -13,60 +13,59 @@ import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-pushnote',
-  templateUrl: 'pushnote.html',
-
+  selector: "page-pushnote",
+  templateUrl: "pushnote.html",
 })
 export class PushnotePage {
   pushes: any = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fcm: FCM, public plt: Platform) {
-    this.plt.ready()
-      .then(() => {
-        try {
-          this.fcm.getToken().then(token => {
-            console.log("gettoken");
-            console.log(token);
-          });
-          this.fcm.onTokenRefresh().subscribe(token => {
-            console.log("refresh")
-            console.log(token);
-          });
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private fcm: FCM,
+    public plt: Platform
+  ) {
+    this.plt.ready().then(() => {
+      try {
+        this.fcm.getToken().then((token) => {
+          console.log("gettoken");
+          console.log(token);
+        });
+        this.fcm.onTokenRefresh().subscribe((token) => {
+          console.log("refresh");
+          console.log(token);
+        });
 
-          console.log("Received");
-          this.fcm.onNotification().subscribe(data => {
-            console.log(data);
-             console.log(JSON.stringify(data));
-            console.log("this.pushes:" + data.title);
+        console.log("Received");
+        this.fcm.onNotification().subscribe((data) => {
+          console.log(data);
+          console.log(JSON.stringify(data));
+          console.log("this.pushes:" + data.title);
 
-            // console.log("this.pushes:" + this.pushes)
-            // console.log("this.pushes.title:" + this.pushes.title)
-            // console.log('title' + this.pushes.title);
-            if (data.wasTapped) {
-              console.log("Received in background");
-              this.pushes.push({
-                body: data.body,
-                title: data.title
-              })
-            } else {
-              console.log("Received in foreground");
-              this.pushes.push({
-                body: data.body,
-                title: data.title
-              })
-            };
-          });
+          // console.log("this.pushes:" + this.pushes)
+          // console.log("this.pushes.title:" + this.pushes.title)
+          // console.log('title' + this.pushes.title);
+          if (data.wasTapped) {
+            console.log("Received in background");
+            this.pushes.push({
+              body: data.body,
+              title: data.title,
+            });
+          } else {
+            console.log("Received in foreground");
+            this.pushes.push({
+              body: data.body,
+              title: data.title,
+            });
+          }
+        });
 
-          this.fcm.onTokenRefresh().subscribe(token => {
-            // Register your new token in your back-end if you want
-            // backend.registerToken(token);
-          });
-        } catch (error) {
-
-        }
-      })
-
+        this.fcm.onTokenRefresh().subscribe((token) => {
+          // Register your new token in your back-end if you want
+          // backend.registerToken(token);
+        });
+      } catch (error) {}
+    });
   }
   // subscribeToTopic() {
   //   this.fcm.subscribeToTopic('enappd');
@@ -82,7 +81,6 @@ export class PushnotePage {
   // }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PushnotePage');
+    console.log("ionViewDidLoad PushnotePage");
   }
-
 }

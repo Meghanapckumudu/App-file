@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from '@ionic/angular';
+import { Component } from "@angular/core";
+import { NavController, NavParams } from "@ionic/angular";
 
 /**
  * Generated class for the SpecialPage page.
@@ -8,18 +8,14 @@ import { IonicPage, NavController, NavParams } from '@ionic/angular';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-special',
-  templateUrl: 'special.html',
+  selector: "page-special",
+  templateUrl: "special.html",
 })
 export class SpecialPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SpecialPage');
+    console.log("ionViewDidLoad SpecialPage");
   }
-
 }

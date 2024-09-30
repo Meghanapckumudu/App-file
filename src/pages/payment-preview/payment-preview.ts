@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from '@ionic/angular';
+import { Component } from "@angular/core";
+import { NavController, NavParams } from "@ionic/angular";
 
 /**
  * Generated class for the PaymentPreviewPage page.
@@ -8,18 +8,14 @@ import { IonicPage, NavController, NavParams } from '@ionic/angular';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-payment-preview',
-  templateUrl: 'payment-preview.html',
+  selector: "page-payment-preview",
+  templateUrl: "payment-preview.html",
 })
 export class PaymentPreviewPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PaymentPreviewPage');
+    console.log("ionViewDidLoad PaymentPreviewPage");
   }
-
 }

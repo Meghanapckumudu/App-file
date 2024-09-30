@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from '@ionic/angular';
-import { WebClientProvider } from '../../providers/web-client/web-client';
-import { DataProvider } from '../../providers/data/data';
+import { Component } from "@angular/core";
+import { NavController, NavParams } from "@ionic/angular";
+import { WebClientProvider } from "../../providers/web-client/web-client";
+import { DataProvider } from "../../providers/data/data";
 
 /**
  * Generated class for the UserLedgerPage page.
@@ -10,26 +10,29 @@ import { DataProvider } from '../../providers/data/data';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-user-ledger',
-  templateUrl: 'user-ledger.html',
+  selector: "page-user-ledger",
+  templateUrl: "user-ledger.html",
 })
 export class UserLedgerPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public apiClient: WebClientProvider, public data: DataProvider) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public apiClient: WebClientProvider,
+    public data: DataProvider
+  ) {}
   ledger: any = [];
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserLedgerPage');
+    console.log("ionViewDidLoad UserLedgerPage");
   }
   ionViewDidEnter() {
-    console.log('ionViewDidLoad UserLedgerPage');
-    this.apiClient.userLedger(this.data.getUser()['mobile'], '').then(result => {
-      console.log(result);
-      this.ledger = result;
-    });
+    console.log("ionViewDidLoad UserLedgerPage");
+    this.apiClient
+      .userLedger(this.data.getUser()["mobile"], "")
+      .then((result) => {
+        console.log(result);
+        this.ledger = result;
+      });
   }
 }
