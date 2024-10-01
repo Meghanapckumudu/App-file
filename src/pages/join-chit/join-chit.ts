@@ -87,7 +87,7 @@ export class JoinChitPage {
     this.apiClient.showLoader();
     this.groupCode = this.navParams.get('groupCode');
     console.log(this.groupCode);
-    this.apiClient.getGroups().then(result => {
+    this.apiClient.getGroups().then((result:any) => {
       res = result;
       for (let index in res) {
         if (result[index]['code'] + "" === this.groupCode + "") {

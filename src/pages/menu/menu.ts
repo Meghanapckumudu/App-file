@@ -1,24 +1,23 @@
-import { Component, ViewChild } from '@angular/core';
-import { AlertController, App, Nav, NavController } from '@ionic/angular';
-import { LoginPage } from '../login/login';
-import { SearchPage } from '../search/search';
-import { SettingsPage } from '../settings/settings';
-import { TabsPage } from '../tabs/tabs';
-import { TestpayPage } from '../testpay/testpay';
-
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Platform } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController, NavController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { DataProvider } from '../../providers/data/data';
 import { ChitListPage } from '../chit-list/chit-list';
 import { geolocPage } from '../geoloc/geoloc';
 import { JmshomePage } from '../jmshome/jmshome';
+import { LoginPage } from '../login/login';
 import { membersendsmsPage } from '../member-sendsms/member-sendsms';
 import { memberupdatePage } from '../member-update/member-update';
 import { MyProfilePage } from '../my-profile/my-profile';
 import { PushnotePage } from '../pushnote/pushnote';
+import { SearchPage } from '../search/search';
+import { SettingsPage } from '../settings/settings';
+import { TabsPage } from '../tabs/tabs';
 import { TesteasypayPage } from '../testeasypay/testeasypay';
+import { TestpayPage } from '../testpay/testpay';
 //import {InAppBrowser} from '@ionic-native/in-app-browser'
 //import {Http, RequestOptions, ResponseContentType, URLSearchParams} from '@angular/http';
 
@@ -51,7 +50,6 @@ export class MenuPage {
   rootPage = TabsPage;
 
   // Reference to the app's root nav
-  @ViewChild(Nav) nav: Nav;
 
   pages: PageInterface[] = [
     { title: 'Home', pageName: 'TabsPage', tabComponent: 'CollectionReportPage', index: 0, icon: 'home' },
@@ -64,8 +62,8 @@ export class MenuPage {
   subscription: any;
   menuStoreId: any;
   constructor(public navCtrl: NavController, public storage: Storage,
-    public data: DataProvider, public app: App, public http: HttpClient,
-    public plt: Platform, private _location: Location, public alertController: AlertController) {
+    public data: DataProvider, public http: HttpClient,
+    public plt: Platform, private _location: Location, public alertController: AlertController, public router:Router) {
     //public paytm: Paytm,
     //, public iab: InAppBrowser
     // this.subscription =   this.plt.backButton.subscribe(() => {
@@ -111,37 +109,9 @@ export class MenuPage {
     }
     console.log("page.pageName")
     // The active child nav is our Tabs Navigation
-    if (this.nav.getActiveChildNav() && page.index != undefined) {
-      console.log("page.pageName -1 " + page.pageName)
-      this.nav.getActiveChildNav().select(page.index);
-
-    } else {
-      // Tabs are not active, so reset the root page
-      // In this case: moving to or from SpecialPage
-      console.log("page.pageName -2 " + page.pageName)
-      this.nav.setRoot(page.pageName, params);
-
-    }
+    this.router.navigate([page.pageName], { queryParams: params });
   }
 
-  isActive(page: PageInterface) {
-    // Again the Tabs Navigation
-    let childNav = this.nav.getActiveChildNav();
-    console.log("Active ")
-    if (childNav) {
-      if (childNav.getSelected() && childNav.getSelected().root === page.tabComponent) {
-        return 'primary';
-      }
-      return;
-    }
-
-    // Fallback needed when there is no active childnav (tabs not active)
-    if (this.nav.getActive() && this.nav.getActive().name === page.pageName) {
-      //console.log("primary-out " )
-      return 'primary';
-    }
-    return;
-  }
   logoutClass() {
     //console.log("logoutClass-out " )
     return '';
@@ -152,40 +122,40 @@ export class MenuPage {
   }
   goToLoginPage() {
     this.storage.clear();
-    this.navCtrl.setRoot(LoginPage);
+    this.router.navigate(['/login']);
   }
   goToSettingPage() {
-    this.navCtrl.push(SettingsPage);
+    this.router.navigate(['/settings']);
   }
   goToHome() {
-    this.navCtrl.push(JmshomePage);
+    this.router.navigate(['/tabs']);
   }
   goToJoinChit() {
-    this.navCtrl.push(ChitListPage);
+    this.router.navigate(['/login']);
   }
   goToMyChits() {
-    this.navCtrl.push(SearchPage);
+    this.router.navigate(['/login']);
   }
   goToReport() {
-    this.navCtrl.push(MyProfilePage);
+    this.router.navigate(['/login']);
   }
   payResponse = "";
 
   gotoPayTest() {
-    this.navCtrl.push(TestpayPage);
+    this.router.navigate(['/login']);
   }
 
   goToGeoLocation() {
-    this.navCtrl.push(geolocPage);
+    this.router.navigate(['/login']);
   }
 
   gotoPushNote() {
-    this.navCtrl.push(PushnotePage);
+    this.router.navigate(['/login']);
   }
 
 
   gototsteasypay() {
-    this.navCtrl.push(TesteasypayPage);
+    this.router.navigate(['/login']);
   }
 
   pay_check() {
@@ -239,16 +209,15 @@ export class MenuPage {
   }
 
   goToUpdateMember() {
-    this.navCtrl.push(memberupdatePage);
+    this.router.navigate(['/login']);
   }
 
   goToSendSmsToMember() {
-    this.navCtrl.push(membersendsmsPage);
+    this.router.navigate(['/login']);
   }
 
   showExitConfirm() {
     let alert = this.alertController.create({
-      title: 'App termination',
       message: 'Do you want to close the app?',
       //backdropDismiss: false,
       buttons: [{
@@ -260,11 +229,11 @@ export class MenuPage {
       }, {
         text: 'Exit',
         handler: () => {
-          navigator['app'].exitApp();
+          //this.plt.
         }
       }]
     });
-    alert.present();
+    alert.then(alert => alert.present());
   }
 
   /*

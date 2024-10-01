@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from '@ionic/angular';
 import { DataProvider } from '../../providers/data/data';
 import { WebClientProvider } from '../../providers/web-client/web-client';
-//import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 /**
  * Generated class for the HowtouseappPage page.
  *

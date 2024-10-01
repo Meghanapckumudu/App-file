@@ -28,7 +28,7 @@ export class WebClientProvider {
 
   initLoader() {
     this.currentLoader = this.loadingCtrl.create({
-      content: this.loaderMessage
+      message: this.loaderMessage
     });
   }
   showLoader() {

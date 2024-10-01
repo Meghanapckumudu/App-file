@@ -12,7 +12,7 @@ import { DataProvider } from "../../providers/data/data";
 
 @Component({
   selector: "page-user-ledger",
-  templateUrl: "user-ledger.html",
+  template: "user-ledger.html",
 })
 export class UserLedgerPage {
   constructor(

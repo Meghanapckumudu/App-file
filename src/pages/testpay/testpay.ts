@@ -1,21 +1,16 @@
-import { DataProvider } from "../../providers/data/data";
-import { Component } from "@angular/core";
 import {
-  NavController,
-  NavParams,
-  AlertController,
-  ModalController,
-} from "@ionic/angular";
-import { WebClientProvider } from "../../providers/web-client/web-client";
-import { InAppBrowser } from "@ionic-native/in-app-browser";
-import { RandomAPI } from "./randomApi";
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpClientModule,
+  HttpClient
 } from "@angular/common/http";
+import { Component } from "@angular/core";
+import { InAppBrowser } from "@awesome-cordova-plugins/in-app-browser";
+import {
+  ModalController,
+  NavController,
+  NavParams
+} from "@ionic/angular";
 import "rxjs/add/operator/map";
-import { convertDataToISO } from "ionic-angular/umd/util/datetime-util";
+import { DataProvider } from "../../providers/data/data";
+import { WebClientProvider } from "../../providers/web-client/web-client";
 
 //import {pgHdfc} from 'cordova-plugin-PgHdfcVas';
 
@@ -26,11 +21,11 @@ import { convertDataToISO } from "ionic-angular/umd/util/datetime-util";
  * Ionic pages and navigation.
  */
 declare var RazorpayCheckout: any;
-var inAppBrowserRef;
+var inAppBrowserRef: any;
 var posts: any;
 declare var cordova: any;
 interface Cordova {
-  InAppBrowser: InAppBrowser;
+  InAppBrowser: typeof InAppBrowser;
 }
 
 @Component({
@@ -55,14 +50,14 @@ export class TestpayPage {
     public data: DataProvider,
     public modalCtrl: ModalController,
     public apiClient: WebClientProvider,
-    public iab: InAppBrowser,
+    public iab: typeof InAppBrowser,
     public http: HttpClient
   ) {
     this.pgateway = {};
 
     this.groupCode = navParams.get("memberCode");
 
-    this.apiClient.getPaymentGatewayDetails().then((result) => {
+    this.apiClient.getPaymentGatewayDetails().then((result:any) => {
       this.pgateway = result[0];
       data.razorpay_merchant_id = this.pgateway.merchant_id;
       data.razorpay_merchant_name = this.pgateway.merchant_name;
@@ -122,7 +117,7 @@ export class TestpayPage {
     this.payWithRazor(rp_obj, pg_obj).then((result) => {});
   }
 
-  payWithRazor(obj, pg_obj) {
+  payWithRazor(obj:any, pg_obj:any) {
     return new Promise((resolve, reject) => {
       console.log("RPay");
       var options = {
@@ -151,7 +146,7 @@ export class TestpayPage {
         },
       };
 
-      var successCallback = function (success) {
+      var successCallback = function (success:any) {
         //alert('payment_id: ' + success.razorpay_payment_id)
         var pay_iid: any = success.razorpay_payment_id;
         var order_iid: any = success.razorpay_order_id;
@@ -295,7 +290,7 @@ export class TestpayPage {
             "hidden=no,location=no"
           );
 
-          browserRef.on("loadstart").subscribe((event) => {
+          browserRef.on("loadstart").subscribe((event:any) => {
             console.log(event.url);
             if (event.url.includes("paysuccess.jsp")) {
               console.log("paysuccess :" + event.url);
@@ -316,7 +311,7 @@ export class TestpayPage {
             }
           });
 
-          browserRef.on("loadstop").subscribe((event) => {
+          browserRef.on("loadstop").subscribe((event:any) => {
             console.log(event.url);
             //Check Wether Payment is Authorized!!
             if (event.url.includes("authorized")) {
@@ -424,7 +419,7 @@ export class TestpayPage {
             "hidden=no,location=no"
           );
 
-          browserRef.on("loadstart").subscribe((event) => {
+          browserRef.on("loadstart").subscribe((event:any) => {
             console.log(event.url);
             if (event.url.includes("paysuccess.jsp")) {
               console.log("paysuccess :" + event.url);
@@ -445,7 +440,7 @@ export class TestpayPage {
             }
           });
 
-          browserRef.on("loadstop").subscribe((event) => {
+          browserRef.on("loadstop").subscribe((event:any) => {
             console.log(event.url);
             //Check Wether Payment is Authorized!!
             if (event.url.includes("authorized")) {
@@ -494,7 +489,7 @@ export class TestpayPage {
             },
           };
 
-          var successCallback = function (success) {
+          var successCallback = function (success:any) {
             //alert('payment_id: ' + success.razorpay_payment_id)
             var pay_iid: any = success.razorpay_payment_id;
             var order_iid: any = success.razorpay_order_id;
@@ -513,7 +508,7 @@ export class TestpayPage {
             //resolve(res)
           };
 
-          var cancelCallback = function (error) {
+          var cancelCallback = function (error:any) {
             console.log("Failure: 0");
             //resolve("0");
             //reject("0");
@@ -580,15 +575,15 @@ export class TestpayPage {
           "hidden=no,location=no"
           //"EnableViewPortScale=yes,closebuttoncaption=Done"
         );
-        browserRef.on("loadstop").subscribe((event) => {
+        browserRef.on("loadstop").subscribe((event:any) => {
           console.log(event.url);
         });
 
-        browserRef.on("loadstart").subscribe((event) => {
+        browserRef.on("loadstart").subscribe((event:any) => {
           console.log(event.url);
 
           if (event.url.includes("authorized")) {
-            browserRef.on("loadstop").subscribe((e) => {
+            browserRef.on("loadstop").subscribe((e:any) => {
               console.log("On Load Stop");
               console.log("On loadstop At authorize");
               console.log(e.url);
@@ -597,14 +592,14 @@ export class TestpayPage {
 
           if (event.url == theOtherUrl) {
             console.log("event.url" + event.url);
-            browserRef.on("loadstop").subscribe((e) => {
+            browserRef.on("loadstop").subscribe((e:any) => {
               console.log("On Load Stop");
 
               console.log(e.url);
             });
 
             browserRef.close();
-            browserRef.on("exit").subscribe((e) => {
+            browserRef.on("exit").subscribe((e:any) => {
               console.log("On Exit");
               console.log("On Exit" + e.url);
             });
@@ -655,12 +650,12 @@ export class TestpayPage {
     });
   }
 
-  showHelp(url) {
+  showHelp(url:any) {
     var target = "_blank";
 
     var options = "location=yes,hidden=yes,beforeload=yes";
 
-    inAppBrowserRef = cordova.InAppBrowser.open(url, target, options);
+    inAppBrowserRef = cordova.InAppBrowser.open(url, target, options) as any;
 
     inAppBrowserRef.addEventListener("loadstart", this.loadStartCallBack);
 
@@ -695,7 +690,7 @@ export class TestpayPage {
     }
   }
 
-  loadErrorCallBack(params) {
+  loadErrorCallBack(params:any) {
     console.log("");
 
     var scriptErrorMesssage =
@@ -713,7 +708,7 @@ export class TestpayPage {
     inAppBrowserRef = undefined;
   }
 
-  executeScriptCallBack(params) {
+  executeScriptCallBack(params:any) {
     if (params[0] == null) {
       console.log(
         "Sorry we couldn't open that page. Message from the server is : '" +
@@ -723,7 +718,7 @@ export class TestpayPage {
     }
   }
 
-  beforeloadCallBack(params, callback) {
+  beforeloadCallBack(params:any, callback:any) {
     if (params.url.startsWith("http://www.example.com/")) {
       // Load this URL in the inAppBrowser.
       callback(params.url);
@@ -733,7 +728,7 @@ export class TestpayPage {
     }
   }
 
-  messageCallBack(params) {
+  messageCallBack(params:any) {
     console.log("message received: " + params.data.my_message);
   }
 }

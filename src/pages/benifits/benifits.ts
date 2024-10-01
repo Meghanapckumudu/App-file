@@ -1,19 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser';
 import { NavController, NavParams, Platform } from '@ionic/angular';
 import { DataProvider } from '../../providers/data/data';
 import { WebClientProvider } from '../../providers/web-client/web-client';
 //import { PreviewAnyFile } from '';
-
-//import { FileOpener } from '@ionic-native/file-opener/ngx';
-//import { DocumentViewer ,  DocumentViewerOptions } from '@ionic-native/document-viewer/ngx';
-//import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-viewer';
-/**
- * Generated class for the BenifitsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 
 @Component({
   selector: 'page-benifits',
@@ -25,8 +15,8 @@ export class BenifitsPage {
   slide1 = "https://drive.google.com/viewerng/viewer?embedded=true&url=https://kumuduapps.in:8443/logo/" + this.data.storeID + "/pdf/"
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public data: DataProvider, public apiClient: WebClientProvider,
-    public plt : Platform,
-    public iab: InAppBrowser,// public document: DocumentViewer,
+    @Inject(InAppBrowser) public iab: typeof InAppBrowser,
+    private platform: Platform
   ) {
     this.groups = [];
     this.apiClient.showLoader();
@@ -41,11 +31,11 @@ export class BenifitsPage {
   }
 
 
-  removeduplicate(groups) {
+  removeduplicate(groups:any) {
     //  const distinctArray =  this.groups.filter((n, i) =>  this.groups.indexOf(n) === i);
     //  const distinctArray =  this.groups.filter((n, i) =>  this.groups.indexOf(n) === i);
     const distinctThings = this.groups.filter(
-      (thing, i, arr) => arr.findIndex(t => t.scheme_name === thing.scheme_name) === i
+      (thing:any, i:any, arr:any) => arr.findIndex((t:any) => t.scheme_name === thing.scheme_name) === i
     );
     this.distinctgroups = distinctThings
     console.log(distinctThings)
@@ -57,11 +47,10 @@ export class BenifitsPage {
 
   subscription: any;
   ionViewDidLoadEnter() {
-    this.subscription = this.plt.backButton.subscribe(() => {
+    this.subscription = this.platform.backButton.subscribe(() => {
       console.log('Back press handler!');
       console.log('Show Exit Alert!');
-   let Mypages: any = BenifitsPage;
-      this.navCtrl.pop(Mypages);
+      this.navCtrl.pop();
     });
 
     console.log('ionViewDidLoad BenifitsPage');
@@ -95,7 +84,7 @@ export class BenifitsPage {
      this.document.viewDocument(this.slide1, 'application/pdf',options)
    }
   */
- DisplayPdf_new(scheme_name) {
+ DisplayPdf_new(scheme_name:any) {
     // let options: InAppBrowserOptions = {
     //   location: 'yes',
     //   hideurlbar: 'yes',
@@ -116,7 +105,7 @@ export class BenifitsPage {
     browser.show()
 
   }
-  DisplayPdf_new1(scheme_name) {
+  DisplayPdf_new1(scheme_name:any) {
   }
   // DisplayPdf_new(scheme_name) {
   //   let MyPdf = ""

@@ -4,7 +4,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { IonicApp, IonicErrorHandler, IonicModule } from '@ionic/angular';
+import { IonicErrorHandler, IonicModule } from '@ionic/angular';
 //import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { Device } from '@ionic-native/device';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
-import { IonicStorageModule } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
 import { BenifitsPage } from '../pages/benifits/benifits';
 import { ChitListPage } from '../pages/chit-list/chit-list';
@@ -72,16 +72,14 @@ import { TesteasypayPage } from '../pages/testeasypay/testeasypay';
     CollectionSummaryPage, MessagesPage, PaymentModePage, JoinChitPage, ChitListPage,
     JoinChitSuccessPage, PrinterListPage, UserLedgerPage, CustomerSearchPage, ReturnpolicyPage,
     TermsPage, PrivacyPage, ContactPage,memberupdatePage, TestpayPage, geolocPage,
-    membersendsmsPage,PushnotePage,GroupsdetailsPage,JmshomePage,OffersPage, BenifitsPage, FaqPage, HowtouseappPage, TesteasypayPage
+    membersendsmsPage,PushnotePage,GroupsdetailsPage,JmshomePage,OffersPage, BenifitsPage, FaqPage, HowtouseappPage, TesteasypayPage,
+
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, {
-      scrollAssist: false,
-      autoFocusAssist: false
-    }), HttpClientModule, IonicStorageModule.forRoot()
+    IonicModule.forRoot(), HttpClientModule, IonicStorageModule.forRoot()
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [],
   entryComponents: [
     MyApp, LoginPage, MenuPage, TabsPage, CollectionReportPage, SearchPage, CustomerProfilePage, MyProfilePage, SchemeDetailPage, SchemePayPage, PaymentSuccessPage, SettingsPage, DashboardPage, CollectionSummaryPage
     , PaymentModePage, JoinChitPage, ChitListPage, JoinChitSuccessPage, UserLedgerPage, CustomerSearchPage,
