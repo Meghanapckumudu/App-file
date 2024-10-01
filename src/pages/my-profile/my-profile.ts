@@ -1,8 +1,6 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams } from "@ionic/angular";
+import { Router } from "@angular/router";
 import { DataProvider } from "../../providers/data/data";
-import { CollectionReportPage } from "../collection-report/collection-report";
-import { CollectionSummaryPage } from "../collection-summary/collection-summary";
 
 /**
  * Generated class for the MyProfilePage page.
@@ -16,13 +14,10 @@ import { CollectionSummaryPage } from "../collection-summary/collection-summary"
   templateUrl: "my-profile.html",
 })
 export class MyProfilePage {
-  startDate: String = "";
-  endDate: String = "";
-  constructor(
-    public navCtrl: NavController,
-    public data: DataProvider,
-    public navParams: NavParams
-  ) {}
+  startDate: string = "";
+  endDate: string = "";
+
+  constructor(public router: Router, public data: DataProvider) {}
 
   ionViewDidLoad() {
     let dateD = new Date();
@@ -31,20 +26,21 @@ export class MyProfilePage {
     this.endDate = dateD.toISOString();
     console.log("ionViewDidLoad MyProfilePage");
   }
+
   ionViewDidEnter() {
     this.data.setSearchterm("");
     this.data.membsearchterm = "";
   }
+
   goToCollectionDetail() {
-    this.navCtrl.push(CollectionReportPage, {
-      s: this.startDate,
-      e: this.endDate,
+    this.router.navigate(["/collection-report"], {
+      state: { s: this.startDate, e: this.endDate },
     });
   }
+
   goToCollectionSummaryPage() {
-    this.navCtrl.push(CollectionSummaryPage, {
-      s: this.startDate,
-      e: this.endDate,
+    this.router.navigate(["/collection-summary"], {
+      state: { s: this.startDate, e: this.endDate },
     });
   }
 }

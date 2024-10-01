@@ -16,7 +16,6 @@ import { DataProvider } from "../../providers/data/data";
 })
 export class UserLedgerPage {
   constructor(
-    public navCtrl: NavController,
     public navParams: NavParams,
     public apiClient: WebClientProvider,
     public data: DataProvider

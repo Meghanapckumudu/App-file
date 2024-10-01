@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
-import { SchemeDetailPage } from '../scheme-detail/scheme-detail';
-import { WebClientProvider } from '../../providers/web-client/web-client';
-import { DataProvider } from '../../providers/data/data';
+import { Component } from "@angular/core";
+import { NavParams } from "@ionic/angular";
+import { SchemeDetailPage } from "../scheme-detail/scheme-detail";
+import { WebClientProvider } from "../../providers/web-client/web-client";
+import { DataProvider } from "../../providers/data/data";
+import { Router } from "@angular/router";
 
 /**
  * Generated class for the SearchPage page.
@@ -12,14 +13,18 @@ import { DataProvider } from '../../providers/data/data';
  */
 
 @Component({
-  selector: 'page-search',
-  templateUrl: 'search.html',
+  selector: "page-search",
+  templateUrl: "search.html",
 })
 export class SearchPage {
   schemes: any;
   searchTerm: String = "";
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public apiClient: WebClientProvider, public data: DataProvider) {
+  constructor(
+    private router: Router,
+    public navParams: NavParams,
+    public apiClient: WebClientProvider,
+    public data: DataProvider
+  ) {
     console.log("constructor");
   }
 
@@ -28,26 +33,22 @@ export class SearchPage {
   }
   ionViewDidEnter() {
     this.searchTerm = this.data.getSearchTerM();
-    console.log('ionViewDidLoad SearchPage');
-    if (this.data.getUserLoginType() == 'customer') {
-      this.searchTerm = this.data.getUser()['mobile'];
-      this.
-        onSearch();
-    }
-    else {
+    console.log("ionViewDidLoad SearchPage");
+    if (this.data.getUserLoginType() == "customer") {
+      this.searchTerm = this.data.getUser()["mobile"];
+      this.onSearch();
+    } else {
       console.log("this.data.membsearchterm" + this.data.getSearchTerM());
       this.searchTerm = this.data.getSearchTerM();
-      if (this.data.environment == 'dev') {
-        console.log("this.searchTerm :"+ this.searchTerm)
+      if (this.data.environment == "dev") {
+        console.log("this.searchTerm :" + this.searchTerm);
         //this.searchTerm = this.data.membsearchterm;
         //this.searchTerm = 'A-26';
         this.onSearch();
         // if (this.searchTerm != "" && this.searchTerm != undefined && this.searchTerm.length > 0) {
         //   this.onSearch();
         // }
-
       }
-
     }
   }
   ionViewDidLeave() {
@@ -55,24 +56,20 @@ export class SearchPage {
     // this.data.membsearchterm = "";
   }
 
-
-
-  goToSchemeDetailPage(memberCode:any) {
-    this.navCtrl.push(SchemeDetailPage, {
-      memberCode: memberCode
-    });
+  goToSchemeDetailPage(memberCode: any) {
+    this.router.navigate(["/scheme-detail", { memberCode: memberCode }]);
   }
-  searchByKeyword(e:any) {
-    console.log("pallavi")
-    console.log(this.searchTerm)
-    this.
-      onSearch();
+
+  searchByKeyword(e: any) {
+    console.log("pallavi");
+    console.log(this.searchTerm);
+    this.onSearch();
   }
   onSearch() {
-    console.log(this.searchTerm)
+    console.log(this.searchTerm);
 
     this.apiClient.showLoader();
-    this.apiClient.schemeDetail(this.searchTerm).then(result => {
+    this.apiClient.schemeDetail(this.searchTerm).then((result) => {
       this.schemes = result;
       this.data.setSearchterm(this.searchTerm);
       this.apiClient.dismissLoader();

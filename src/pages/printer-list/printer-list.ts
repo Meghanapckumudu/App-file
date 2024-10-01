@@ -1,11 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import {
-  NavController,
-  NavParams,
-  ViewController,
-  Platform,
-  Navbar,
-} from "@ionic/angular";
+import { NavParams, ViewController, Platform, Navbar } from "@ionic/angular";
 
 import { DataProvider } from "../../providers/data/data";
 //import { ChitListPage } from '../chit-list/chit-list';
@@ -21,7 +15,6 @@ export class PrinterListPage implements OnInit {
   @ViewChild("navbar") navBar: Navbar;
   devices: any = [];
   constructor(
-    public navCtrl: NavController,
     public navParams: NavParams,
     public platform: Platform,
     public bluetoothSerial: BluetoothSerial,

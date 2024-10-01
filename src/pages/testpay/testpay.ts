@@ -1,13 +1,7 @@
-import {
-  HttpClient
-} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { InAppBrowser } from "@awesome-cordova-plugins/in-app-browser";
-import {
-  ModalController,
-  NavController,
-  NavParams
-} from "@ionic/angular";
+import { ModalController, NavParams } from "@ionic/angular";
 import "rxjs/add/operator/map";
 import { DataProvider } from "../../providers/data/data";
 import { WebClientProvider } from "../../providers/web-client/web-client";
@@ -45,7 +39,6 @@ export class TestpayPage {
   public disabled = false;
 
   constructor(
-    public navCtrl: NavController,
     public navParams: NavParams,
     public data: DataProvider,
     public modalCtrl: ModalController,
@@ -57,7 +50,7 @@ export class TestpayPage {
 
     this.groupCode = navParams.get("memberCode");
 
-    this.apiClient.getPaymentGatewayDetails().then((result:any) => {
+    this.apiClient.getPaymentGatewayDetails().then((result: any) => {
       this.pgateway = result[0];
       data.razorpay_merchant_id = this.pgateway.merchant_id;
       data.razorpay_merchant_name = this.pgateway.merchant_name;
@@ -117,7 +110,7 @@ export class TestpayPage {
     this.payWithRazor(rp_obj, pg_obj).then((result) => {});
   }
 
-  payWithRazor(obj:any, pg_obj:any) {
+  payWithRazor(obj: any, pg_obj: any) {
     return new Promise((resolve, reject) => {
       console.log("RPay");
       var options = {
@@ -146,7 +139,7 @@ export class TestpayPage {
         },
       };
 
-      var successCallback = function (success:any) {
+      var successCallback = function (success: any) {
         //alert('payment_id: ' + success.razorpay_payment_id)
         var pay_iid: any = success.razorpay_payment_id;
         var order_iid: any = success.razorpay_order_id;
@@ -290,7 +283,7 @@ export class TestpayPage {
             "hidden=no,location=no"
           );
 
-          browserRef.on("loadstart").subscribe((event:any) => {
+          browserRef.on("loadstart").subscribe((event: any) => {
             console.log(event.url);
             if (event.url.includes("paysuccess.jsp")) {
               console.log("paysuccess :" + event.url);
@@ -311,7 +304,7 @@ export class TestpayPage {
             }
           });
 
-          browserRef.on("loadstop").subscribe((event:any) => {
+          browserRef.on("loadstop").subscribe((event: any) => {
             console.log(event.url);
             //Check Wether Payment is Authorized!!
             if (event.url.includes("authorized")) {
@@ -419,7 +412,7 @@ export class TestpayPage {
             "hidden=no,location=no"
           );
 
-          browserRef.on("loadstart").subscribe((event:any) => {
+          browserRef.on("loadstart").subscribe((event: any) => {
             console.log(event.url);
             if (event.url.includes("paysuccess.jsp")) {
               console.log("paysuccess :" + event.url);
@@ -440,7 +433,7 @@ export class TestpayPage {
             }
           });
 
-          browserRef.on("loadstop").subscribe((event:any) => {
+          browserRef.on("loadstop").subscribe((event: any) => {
             console.log(event.url);
             //Check Wether Payment is Authorized!!
             if (event.url.includes("authorized")) {
@@ -489,7 +482,7 @@ export class TestpayPage {
             },
           };
 
-          var successCallback = function (success:any) {
+          var successCallback = function (success: any) {
             //alert('payment_id: ' + success.razorpay_payment_id)
             var pay_iid: any = success.razorpay_payment_id;
             var order_iid: any = success.razorpay_order_id;
@@ -508,7 +501,7 @@ export class TestpayPage {
             //resolve(res)
           };
 
-          var cancelCallback = function (error:any) {
+          var cancelCallback = function (error: any) {
             console.log("Failure: 0");
             //resolve("0");
             //reject("0");
@@ -575,15 +568,15 @@ export class TestpayPage {
           "hidden=no,location=no"
           //"EnableViewPortScale=yes,closebuttoncaption=Done"
         );
-        browserRef.on("loadstop").subscribe((event:any) => {
+        browserRef.on("loadstop").subscribe((event: any) => {
           console.log(event.url);
         });
 
-        browserRef.on("loadstart").subscribe((event:any) => {
+        browserRef.on("loadstart").subscribe((event: any) => {
           console.log(event.url);
 
           if (event.url.includes("authorized")) {
-            browserRef.on("loadstop").subscribe((e:any) => {
+            browserRef.on("loadstop").subscribe((e: any) => {
               console.log("On Load Stop");
               console.log("On loadstop At authorize");
               console.log(e.url);
@@ -592,14 +585,14 @@ export class TestpayPage {
 
           if (event.url == theOtherUrl) {
             console.log("event.url" + event.url);
-            browserRef.on("loadstop").subscribe((e:any) => {
+            browserRef.on("loadstop").subscribe((e: any) => {
               console.log("On Load Stop");
 
               console.log(e.url);
             });
 
             browserRef.close();
-            browserRef.on("exit").subscribe((e:any) => {
+            browserRef.on("exit").subscribe((e: any) => {
               console.log("On Exit");
               console.log("On Exit" + e.url);
             });
@@ -650,7 +643,7 @@ export class TestpayPage {
     });
   }
 
-  showHelp(url:any) {
+  showHelp(url: any) {
     var target = "_blank";
 
     var options = "location=yes,hidden=yes,beforeload=yes";
@@ -690,7 +683,7 @@ export class TestpayPage {
     }
   }
 
-  loadErrorCallBack(params:any) {
+  loadErrorCallBack(params: any) {
     console.log("");
 
     var scriptErrorMesssage =
@@ -708,7 +701,7 @@ export class TestpayPage {
     inAppBrowserRef = undefined;
   }
 
-  executeScriptCallBack(params:any) {
+  executeScriptCallBack(params: any) {
     if (params[0] == null) {
       console.log(
         "Sorry we couldn't open that page. Message from the server is : '" +
@@ -718,7 +711,7 @@ export class TestpayPage {
     }
   }
 
-  beforeloadCallBack(params:any, callback:any) {
+  beforeloadCallBack(params: any, callback: any) {
     if (params.url.startsWith("http://www.example.com/")) {
       // Load this URL in the inAppBrowser.
       callback(params.url);
@@ -728,7 +721,7 @@ export class TestpayPage {
     }
   }
 
-  messageCallBack(params:any) {
+  messageCallBack(params: any) {
     console.log("message received: " + params.data.my_message);
   }
 }

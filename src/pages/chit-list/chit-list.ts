@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
-import { DataProvider } from '../../providers/data/data';
-import { WebClientProvider } from '../../providers/web-client/web-client';
-import { GroupsdetailsPage } from '../groupsdetails/groupsdetails';
-import { JoinChitPage } from '../join-chit/join-chit';
+import { Component } from "@angular/core";
+import { NavController, NavParams } from "@ionic/angular";
+import { DataProvider } from "../../providers/data/data";
+import { WebClientProvider } from "../../providers/web-client/web-client";
+import { Router } from "@angular/router";
+
 /**
  * Generated class for the ChitListPage page.
  *
@@ -11,19 +11,22 @@ import { JoinChitPage } from '../join-chit/join-chit';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-chit-list',
-  templateUrl: 'chit-list.html',
+  selector: "page-chit-list",
+  templateUrl: "chit-list.html",
 })
 export class ChitListPage {
   groups: any;
-  constructor(public navCtrl: NavController,  public data: DataProvider,
-    public navParams: NavParams, public apiClient: WebClientProvider) {
+  constructor(
+    public router: Router,
+    public data: DataProvider,
+    public navParams: NavParams,
+    public apiClient: WebClientProvider
+  ) {
     this.groups = [];
     this.apiClient.showLoader();
 
-    this.apiClient.getGroups().then(result => {
+    this.apiClient.getGroups().then((result) => {
       this.groups = result;
       this.apiClient.dismissLoader();
     });
@@ -32,14 +35,14 @@ export class ChitListPage {
   ionViewWillEnter() {
     this.data.setSearchterm("");
     this.data.membsearchterm = "";
-    console.log('ionViewWillEnter ChitListPage');
+    console.log("ionViewWillEnter ChitListPage");
   }
   subscription: any;
 
   ionViewDidLoadEnter() {
     this.data.setSearchterm("");
     this.data.membsearchterm = "";
-    console.log('ionViewDidLoad ChitListPage');
+    console.log("ionViewDidLoad ChitListPage");
 
     // this.subscription = this.plt.backButton.subscribe(() => {
     //   console.log('Back press handler!');
@@ -47,24 +50,17 @@ export class ChitListPage {
     //   let Mypages: any = ChitListPage;
     //   this.navCtrl.pop(Mypages);
     // });
-
   }
 
-
- ionViewDidLeave() {
-  //this.subscription.unsubscribe();
-}
-
-  goToJoinGroup(groupCode) {
-    this.navCtrl.push(JoinChitPage, {
-      groupCode: groupCode
-    });
+  ionViewDidLeave() {
+    //this.subscription.unsubscribe();
   }
 
-  DisplayGroupDetails(groupCode) {
-    this.navCtrl.push(GroupsdetailsPage, {
-      groupCode: groupCode
-    });
+  goToJoinGroup(groupCode: string) {
+    this.router.navigate(["/join-chit", { groupCode: groupCode }]);
   }
 
+  DisplayGroupDetails(groupCode: any) {
+    this.router.navigate(["/groupsdetails", { groupCode: groupCode }]);
+  }
 }

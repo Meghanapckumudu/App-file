@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from '@ionic/angular';
-import { DataProvider } from '../../providers/data/data';
-import { WebClientProvider } from '../../providers/web-client/web-client';
+import { Component } from "@angular/core";
+import { NavParams, Platform } from "@ionic/angular";
+import { DataProvider } from "../../providers/data/data";
+import { WebClientProvider } from "../../providers/web-client/web-client";
+import { Router } from "@angular/router";
 
 /**
  * Generated class for the FaqPage page.
@@ -10,10 +11,9 @@ import { WebClientProvider } from '../../providers/web-client/web-client';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-faq',
-  templateUrl: 'faq.html',
+  selector: "page-faq",
+  templateUrl: "faq.html",
 })
 export class FaqPage {
   index = 0;
@@ -21,29 +21,32 @@ export class FaqPage {
   public hidden: boolean[] = [];
   faq: any;
   isCardCollapse = 0;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public data: DataProvider, private plt: Platform,
-    public apiClient: WebClientProvider) {
-    console.log("Constructor")
+  constructor(
+    private router: Router,
+    public navParams: NavParams,
+    public data: DataProvider,
+    private plt: Platform,
+    public apiClient: WebClientProvider
+  ) {
+    console.log("Constructor");
     this.faq = [];
     this.apiClient.showLoader();
-    this.apiClient.getfaq().then(result => {
+    this.apiClient.getfaq().then((result) => {
       this.faq = result;
-      console.log(" this.faq :" + this.faq)
+      console.log(" this.faq :" + this.faq);
       this.apiClient.dismissLoader();
     });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FaqPage');
+    console.log("ionViewDidLoad FaqPage");
   }
   subscription: any;
   ionViewDidEnter() {
     this.subscription = this.plt.backButton.subscribe(() => {
-      console.log('Back press handler!');
-      console.log('Show Exit Alert!');
-      let Mypages: any = FaqPage;
-      this.navCtrl.pop(Mypages);
+      console.log("Back press handler!");
+      console.log("Show Exit Alert!");
+      this.router.navigate(["/faq"]); // Adjust the path based on your routing setup
     });
   }
 

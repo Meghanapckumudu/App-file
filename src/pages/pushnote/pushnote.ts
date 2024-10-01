@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams } from "@ionic/angular";
+import { NavParams } from "@ionic/angular";
 //import { FCM } from '@ionic-native/fcm';
 import { Platform } from "@ionic/angular";
 import { Observable } from "rxjs-compat";
@@ -20,7 +20,6 @@ import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
 export class PushnotePage {
   pushes: any = [];
   constructor(
-    public navCtrl: NavController,
     public navParams: NavParams,
     private fcm: FCM,
     public plt: Platform

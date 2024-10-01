@@ -38,8 +38,9 @@ import { Observable } from "rxjs-compat";
 import { UniqueDeviceID } from "@ionic-native/unique-device-id/ngx";
 import { Device } from "@ionic-native/device";
 import { Location } from "@angular/common";
-import { NavController } from "@ionic/angular";
 import { ToastController } from "@ionic/angular";
+import { Router } from "@angular/router";
+
 declare var SMSReceive: any;
 
 // import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
@@ -110,7 +111,7 @@ export class LoginPage {
   // @ViewChildren(IonRouterOutlet) routerOutlets: QueryList<IonRouterOutlet>;
   //device_id: String = "";
   constructor(
-    public navCtrl: NavController,
+    private router: Router,
     public navParams: NavParams,
     public apiClient: WebClientProvider,
     public alertCtrl: AlertController,
@@ -146,10 +147,9 @@ export class LoginPage {
         });
 
         if (!isCutOff && logtype == "agent") {
-          this.storage.clear();
-          this.navCtrl.insert(0, LoginPage);
-          this.navCtrl.popToRoot();
-          //this.navCtrl.setRoot(LoginPage);
+          this.storage.clear().then(() => {
+            this.router.navigate(["/login"]); // Assuming /login is the route for LoginPage
+          });
         }
       } catch (e) {}
     });
@@ -268,14 +268,14 @@ export class LoginPage {
                 this.data.setUser(val);
                 this.data.agentID = val["agent_id"];
                 this.data.setAgentID(val["agent_id"]);
-                this.navCtrl.push(MenuPage);
+                this.router.navigate(["/menu"]); // Adjust the path as needed
               }
             });
           }
         } else if (val === "customer") {
           this.storage.get("loggedInUserObj").then((val) => {
             this.data.setUser(val);
-            this.navCtrl.push(MenuPage);
+            this.router.navigate(["/menu"]); // Adjust the path as needed
           });
         }
       } else {
@@ -520,7 +520,7 @@ export class LoginPage {
               this.apiClient.dismissLoader();
               console.log("calling Menu-1");
               this.changeMode("otp");
-              this.navCtrl.push(MenuPage);
+              this.router.navigate(["/menu"]); // Adjust the path as needed
               console.log("calling Menua-fter");
             } else {
               this.changeMode("login");
@@ -624,7 +624,7 @@ export class LoginPage {
           this.data.setUser(result);
           this.data.setAgentID(result["agent_id"]);
           this.data.setUserLoginType("agent");
-          this.navCtrl.push(MenuPage);
+          this.router.navigate(["/menu"]); // Adjust the path as needed
         } else {
           this.changeMode("otp");
           let alert = this.alertCtrl.create({
@@ -1079,7 +1079,7 @@ export class LoginPage {
           this.data.setUser(result);
           this.data.setAgentID(result["agent_id"]);
           this.data.setUserLoginType("agent");
-          this.navCtrl.push(MenuPage);
+          this.router.navigate(["/menu"]); // Adjust the path as needed
         } else {
           this.changeMode("otp");
           // let alert = this.alertCtrl.create({

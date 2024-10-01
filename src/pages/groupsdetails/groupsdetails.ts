@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from '@ionic/angular';
-import { DataProvider } from '../../providers/data/data';
+import { Component } from "@angular/core";
+import { NavController, NavParams, Platform } from "@ionic/angular";
+import { DataProvider } from "../../providers/data/data";
+import { Router } from "@angular/router";
+
 /**
  * Generated class for the GroupsdetailsPage page.
  *
@@ -8,10 +10,9 @@ import { DataProvider } from '../../providers/data/data';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-groupsdetails',
-  templateUrl: 'groupsdetails.html',
+  selector: "page-groupsdetails",
+  templateUrl: "groupsdetails.html",
 })
 export class GroupsdetailsPage {
   private groupCode: any;
@@ -22,33 +23,50 @@ export class GroupsdetailsPage {
   // slide4 = "https://kumuduapps.in:8443/logo/" + this.data.storeID + "/groups/" + this.groupCode + "/image4.jpg"
   // slide5 = "https://kumuduapps.in:8443/logo/" + this.data.storeID + "/groups/" + this.groupCode + "/image5.jpg"
 
-  constructor(public navCtrl: NavController, private plt: Platform,
-    public navParams: NavParams, public data: DataProvider) {
-  }
+  constructor(
+    private router: Router,
+    private plt: Platform,
+    public navParams: NavParams,
+    public data: DataProvider
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GroupsdetailsPage');
+    console.log("ionViewDidLoad GroupsdetailsPage");
   }
 
   subscription: any;
 
   ionViewDidEnter() {
-    this.groupCode = this.navParams.get('groupCode');
+    this.groupCode = this.navParams.get("groupCode");
     console.log(this.groupCode);
-    this.slide1 = "https://kumuduapps.in:8443/logo/" + this.data.storeID + "/groups/" + this.groupCode + "/image1.jpg"
-    this.slide2 = "https://kumuduapps.in:8443/logo/" + this.data.storeID + "/groups/" + this.groupCode + "/image2.jpg"
-    this.slide3 = "https://kumuduapps.in:8443/logo/" + this.data.storeID + "/groups/" + this.groupCode + "/image3.jpg"
+    this.slide1 =
+      "https://kumuduapps.in:8443/logo/" +
+      this.data.storeID +
+      "/groups/" +
+      this.groupCode +
+      "/image1.jpg";
+    this.slide2 =
+      "https://kumuduapps.in:8443/logo/" +
+      this.data.storeID +
+      "/groups/" +
+      this.groupCode +
+      "/image2.jpg";
+    this.slide3 =
+      "https://kumuduapps.in:8443/logo/" +
+      this.data.storeID +
+      "/groups/" +
+      this.groupCode +
+      "/image3.jpg";
 
     this.subscription = this.plt.backButton.subscribe(() => {
-      console.log('Back press handler!');
-      console.log('Show Exit Alert!');
-      let Mypages: any = GroupsdetailsPage;
-      this.navCtrl.pop(Mypages);
+      console.log("Back press handler!");
+      console.log("Show Exit Alert!");
+      // let Mypages: any = GroupsdetailsPage;
+      this.router.navigate(["/groupsdetails"]);
     });
   }
 
   ionViewDidLeave() {
     this.subscription.unsubscribe();
   }
-
 }

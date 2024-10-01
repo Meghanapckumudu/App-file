@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
-import { AlertController, ModalController, NavController, NavParams, Platform } from '@ionic/angular';
+import { Component } from "@angular/core";
+import {
+  AlertController,
+  ModalController,
+  NavParams,
+  Platform,
+} from "@ionic/angular";
 //import { CustomerProfilePage } from '../customer-profile/customer-profile';
 //import { MyProfilePage } from '../my-profile/my-profile';
 //import { SchemeDetailPage } from '../scheme-detail/scheme-detail';
-import { SchemePayPage } from '../scheme-pay/scheme-pay';
+import { SchemePayPage } from "../scheme-pay/scheme-pay";
 //import { PaymentSuccessPage } from '../payment-success/payment-success';
-import { DataProvider } from '../../providers/data/data';
-import { WebClientProvider } from '../../providers/web-client/web-client';
-import { PrinterListPage } from '../printer-list/printer-list';
+import { DataProvider } from "../../providers/data/data";
+import { WebClientProvider } from "../../providers/web-client/web-client";
+import { PrinterListPage } from "../printer-list/printer-list";
+import { Router } from "@angular/router";
 
 /**
  * Generated class for the CollectionReportPage page.
@@ -16,77 +22,83 @@ import { PrinterListPage } from '../printer-list/printer-list';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-collection-report',
-  templateUrl: 'collection-report.html',
+  selector: "page-collection-report",
+  templateUrl: "collection-report.html",
 })
 export class CollectionReportPage {
   ledger: any;
   amountCollected: any = 0;
   startDate: any;
   endDate: any;
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController
-    , public navParams: NavParams, public apiClient: WebClientProvider, private plt: Platform,
+  constructor(
+    private router: Router,
+    private alertCtrl: AlertController,
+    public navParams: NavParams,
+    public apiClient: WebClientProvider,
+    private plt: Platform,
     public data: DataProvider,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController
+  ) {
     this.apiClient.showLoader();
-    this.startDate = navParams.get('s');
-    this.endDate = navParams.get('e');
-    this.apiClient.getMyLedger({
-      "startDate": this.startDate, "endDate": this.endDate,
-      "agentID": this.data.agentID + "",
-      "storeID": this.data.storeID
-    })
-      .then(result => {
+    this.startDate = navParams.get("s");
+    this.endDate = navParams.get("e");
+    this.apiClient
+      .getMyLedger({
+        startDate: this.startDate,
+        endDate: this.endDate,
+        agentID: this.data.agentID + "",
+        storeID: this.data.storeID,
+      })
+      .then((result) => {
         this.ledger = result;
         for (let index in this.ledger) {
-          this.amountCollected = this.amountCollected + result[index]['amount_collected'];
-        } this.apiClient.dismissLoader();
+          this.amountCollected =
+            this.amountCollected + result[index]["amount_collected"];
+        }
+        this.apiClient.dismissLoader();
       });
-
   }
 
   subscription: any;
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CollectionReportPage');
+    console.log("ionViewDidLoad CollectionReportPage");
 
     this.subscription = this.plt.backButton.subscribe(() => {
-      console.log('Back press handler!');
-      console.log('Show Exit Alert!');
-      let Mypages: any = CollectionReportPage;
-      this.navCtrl.pop(Mypages);
+      console.log("Back press handler!");
+      console.log("Show Exit Alert!");
+      // let Mypages: any = CollectionReportPage;
+      this.router.navigate(["/collection-report"]);
     });
-
   }
-
 
   ionViewDidLeave() {
     this.subscription.unsubscribe();
   }
 
   goTo6() {
-    this.navCtrl.push(SchemePayPage);
+    // this.navCtrl.push(SchemePayPage);
+    this.router.navigate(["/scheme-pay"]);
   }
   presentConfirm() {
     let alert = this.alertCtrl.create({
-      title: 'Confirm Print',
-      message: 'printing slip in ZJ-5805 printer, please switch it on',
+      title: "Confirm Print",
+      message: "printing slip in ZJ-5805 printer, please switch it on",
       buttons: [
         {
-          text: 'Cancel',
-          role: 'cancel',
+          text: "Cancel",
+          role: "cancel",
           handler: () => {
-            console.log('Cancel clicked');
-          }
+            console.log("Cancel clicked");
+          },
         },
         {
-          text: 'Print',
+          text: "Print",
           handler: () => {
-            console.log('Buy clicked');
-          }
-        }
-      ]
+            console.log("Buy clicked");
+          },
+        },
+      ],
     });
     alert.present();
   }

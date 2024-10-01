@@ -1,11 +1,6 @@
 import { DataProvider } from "../../providers/data/data";
 import { Component } from "@angular/core";
-import {
-  NavController,
-  NavParams,
-  AlertController,
-  ModalController,
-} from "@ionic/angular";
+import { NavParams, AlertController, ModalController } from "@ionic/angular";
 import { WebClientProvider } from "../../providers/web-client/web-client";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import {
@@ -31,7 +26,6 @@ export class TesteasypayPage {
   private epay: any;
 
   constructor(
-    public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public data: DataProvider,

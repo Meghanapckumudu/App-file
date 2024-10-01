@@ -1,61 +1,65 @@
 import { Component, ViewChild } from "@angular/core";
-import {
-  NavController,
-  NavParams,
-  App,
-  ModalController,
-  Platform,
-  Navbar,
-} from "@ionic/angular";
+import { Router } from "@angular/router";
+import { Platform } from "@ionic/angular";
 import { PrinterListPage } from "../printer-list/printer-list";
 import { DataProvider } from "../../providers/data/data";
 import { SearchPage } from "../search/search";
-//import { DashboardPage } from '../dashboard/dashboard';
 import { MenuPage } from "../menu/menu";
+import { ModalController } from "@ionic/angular";
 
 @Component({
   selector: "page-payment-success",
   templateUrl: "payment-success.html",
 })
 export class PaymentSuccessPage {
-  @ViewChild("navbar") navBar: Navbar;
-
-  //private tabIndex: number = 0;
+  @ViewChild("navbar") navBar: any; // Adjust type if you know the specific type
   voucherNo: any = "";
+
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
+    private router: Router,
     public platform: Platform,
-    public app: App,
     public modalCtrl: ModalController,
     public data: DataProvider
   ) {
-    this.voucherNo = navParams.get("voucherNo");
-    this.platform.registerBackButtonAction(() => this.backButtonClick, 2);
+    // Using Router instead of NavParams
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation && navigation.extras.state) {
+      this.voucherNo = navigation.extras.state["voucherNo"]; // Access voucherNo from state
+    }
+
+    // Register back button action
+    this.platform.backButton.subscribeWithPriority(2, () =>
+      this.backButtonClick()
+    );
   }
 
   backButtonClick() {
-    console.log("// dos omething");
-    this.navCtrl.push(SearchPage);
+    console.log("// doing something");
+    this.router.navigate(["/search"]); // Navigate to SearchPage
   }
 
   ionViewDidEnter() {
-    this.navBar.backButtonClick = this.backButtonClick;
+    // If you are using a custom back button click handler in the navbar, set it here
+    if (this.navBar) {
+      this.navBar.backButtonClick = this.backButtonClick.bind(this);
+    }
   }
+
   ionViewDidLoad() {
     console.log("ionViewDidLoad PaymentSuccessPage");
     if (this.data.userLoginType == "agent") {
       this.print();
     }
   }
+
   backToHome() {
-    /*this.navCtrl.parent.select(this.tabIndex);
-    this.navCtrl.popToRoot()*/
-    //this.navCtrl.push(DashboardPage);
-    this.navCtrl.push(MenuPage);
+    this.router.navigate(["/menu"]); // Navigate to MenuPage
   }
-  print() {
-    let profileModal = this.modalCtrl.create(PrinterListPage);
-    profileModal.present();
+
+  async print() {
+    const profileModal = await this.modalCtrl.create({
+      component: PrinterListPage,
+    });
+    await profileModal.present();
   }
 }

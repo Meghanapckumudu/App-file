@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from '@ionic/angular';
+import { Component } from "@angular/core";
+import { NavParams, ViewController } from "@ionic/angular";
 
 /**
  * Generated class for the ContactPage page.
@@ -8,22 +8,18 @@ import { NavController, NavParams, ViewController } from '@ionic/angular';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html',
+  selector: "page-contact",
+  templateUrl: "contact.html",
 })
 export class ContactPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-  }
+  constructor(public navParams: NavParams, public viewCtrl: ViewController) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactPage');
+    console.log("ionViewDidLoad ContactPage");
   }
 
   dismiss() {
     this.viewCtrl.dismiss();
   }
-
 }

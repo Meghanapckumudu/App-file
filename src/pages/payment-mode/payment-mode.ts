@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { NavController, NavParams } from "@ionic/angular";
 //import { SchemePayPage } from '../scheme-pay/scheme-pay';
 import { PaymentSuccessPage } from "../payment-success/payment-success";
+import { Router } from "@angular/router";
 
 /**
  * Generated class for the PaymentModePage page.
@@ -16,7 +17,7 @@ import { PaymentSuccessPage } from "../payment-success/payment-success";
 })
 export class PaymentModePage {
   // private scheme: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private router: Router, public navParams: NavParams) {
     //  this.scheme = {
     //     name: "s1", "group": "g1", "title": "Shiva Ganesh", "pincode": "517501", "city": "Tirupati", "rate": 1000, "instalement": "20", "memberCode": "MEM123",
     //     "amount": 2000, weight: "20gm", "initial": "mr",
@@ -30,6 +31,6 @@ export class PaymentModePage {
     console.log("ionViewDidLoad PaymentModePage");
   }
   goToPaymentPage() {
-    this.navCtrl.push(PaymentSuccessPage);
+    this.router.navigate(["/payment-success"]); // Use router to navigate to PaymentSuccessPage
   }
 }

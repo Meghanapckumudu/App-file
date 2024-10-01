@@ -1,17 +1,8 @@
 import { Component } from "@angular/core";
-import {
-  NavController,
-  NavParams,
-  AlertController,
-  ModalController,
-  Platform,
-} from "@ionic/angular";
+import { Router } from "@angular/router";
+import { AlertController, ModalController, Platform } from "@ionic/angular";
 import { WebClientProvider } from "../../providers/web-client/web-client";
-// import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
-import { DashboardPage } from "../dashboard/dashboard";
-
 import { DataProvider } from "../../providers/data/data";
-//import { Paytm } from '@ionic-native/paytm';
 
 /**
  * Generated class for the DashboardPage page.
@@ -24,18 +15,8 @@ import { DataProvider } from "../../providers/data/data";
   selector: "page-member-update",
   templateUrl: "member-update.html",
 })
-export class memberupdatePage {
+export class MemberUpdatePage {
   metrics: any = {};
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public alertCtrl: AlertController,
-    public apiClient: WebClientProvider,
-    private plt: Platform,
-    public modalCtrl: ModalController,
-    public data: DataProvider
-  ) {}
-
   private Mupdate: any = {
     mgroup: "",
     memberNo: "",
@@ -54,20 +35,31 @@ export class memberupdatePage {
     agent_id: "",
   };
 
+  constructor(
+    private router: Router,
+    public alertCtrl: AlertController,
+    public apiClient: WebClientProvider,
+    private plt: Platform,
+    public modalCtrl: ModalController,
+    public data: DataProvider
+  ) {}
+
   ionViewDidLoad() {}
 
   subscription: any;
+
   ionViewDidEnter() {
     this.subscription = this.plt.backButton.subscribe(() => {
       console.log("Back press handler!");
       console.log("Show Exit Alert!");
-      let Mypages: any = memberupdatePage;
-      this.navCtrl.pop(Mypages);
+      this.router.navigate(["/member-update"]); // Navigate to the dashboard page
     });
   }
+
   ionViewDidLeave() {
     this.subscription.unsubscribe();
   }
+
   ionViewWillEnter() {
     console.log("ionViewDidLoad memberupdatePage");
   }
@@ -93,20 +85,21 @@ export class memberupdatePage {
     this.apiClient.Update_MDetails(this.Mupdate).then((result) => {
       this.apiClient.dismissLoader();
       console.log(result);
-      let alert = this.alertCtrl.create({
-        title: "Member Update",
-        subTitle: "Member Updated",
-        buttons: [
-          {
-            text: "Ok",
-            role: "ok",
-            handler: () => {
-              this.navCtrl.push(DashboardPage);
+      this.alertCtrl
+        .create({
+          header: "Member Update",
+          subHeader: "Member Updated",
+          buttons: [
+            {
+              text: "Ok",
+              role: "ok",
+              handler: () => {
+                this.router.navigate(["/member-update"]); // Navigate to the dashboard page
+              },
             },
-          },
-        ],
-      });
-      alert.present();
+          ],
+        })
+        .then((alert) => alert.present());
     });
   }
 }

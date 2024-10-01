@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
+import { Component } from "@angular/core";
+import { NavParams } from "@ionic/angular";
 
 /**
  * Generated class for the CustomerProfilePage page.
@@ -8,17 +8,14 @@ import { NavController, NavParams } from '@ionic/angular';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-customer-profile',
-  templateUrl: 'customer-profile.html',
+  selector: "page-customer-profile",
+  templateUrl: "customer-profile.html",
 })
 export class CustomerProfilePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CustomerProfilePage');
+    console.log("ionViewDidLoad CustomerProfilePage");
   }
 }

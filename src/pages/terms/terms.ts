@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams, ViewController } from "@ionic/angular";
+import { NavParams, ViewController } from "@ionic/angular";
 
 /**
  * Generated class for the TermsPage page.
@@ -13,11 +13,7 @@ import { NavController, NavParams, ViewController } from "@ionic/angular";
   templateUrl: "terms.html",
 })
 export class TermsPage {
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public viewCtrl: ViewController
-  ) {}
+  constructor(public navParams: NavParams, public viewCtrl: ViewController) {}
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad TermsPage");

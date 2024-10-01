@@ -1,27 +1,25 @@
-import { Location } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController, NavController, Platform } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
-import { DataProvider } from '../../providers/data/data';
-import { ChitListPage } from '../chit-list/chit-list';
-import { geolocPage } from '../geoloc/geoloc';
-import { JmshomePage } from '../jmshome/jmshome';
-import { LoginPage } from '../login/login';
-import { membersendsmsPage } from '../member-sendsms/member-sendsms';
-import { memberupdatePage } from '../member-update/member-update';
-import { MyProfilePage } from '../my-profile/my-profile';
-import { PushnotePage } from '../pushnote/pushnote';
-import { SearchPage } from '../search/search';
-import { SettingsPage } from '../settings/settings';
-import { TabsPage } from '../tabs/tabs';
-import { TesteasypayPage } from '../testeasypay/testeasypay';
-import { TestpayPage } from '../testpay/testpay';
+import { Location } from "@angular/common";
+import { HttpClient } from "@angular/common/http";
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { AlertController, Platform } from "@ionic/angular";
+import { Storage } from "@ionic/storage";
+import { DataProvider } from "../../providers/data/data";
+import { ChitListPage } from "../chit-list/chit-list";
+import { geolocPage } from "../geoloc/geoloc";
+import { JmshomePage } from "../jmshome/jmshome";
+import { LoginPage } from "../login/login";
+import { membersendsmsPage } from "../member-sendsms/member-sendsms";
+import { memberupdatePage } from "../member-update/member-update";
+import { MyProfilePage } from "../my-profile/my-profile";
+import { PushnotePage } from "../pushnote/pushnote";
+import { SearchPage } from "../search/search";
+import { SettingsPage } from "../settings/settings";
+import { TabsPage } from "../tabs/tabs";
+import { TesteasypayPage } from "../testeasypay/testeasypay";
+import { TestpayPage } from "../testpay/testpay";
 //import {InAppBrowser} from '@ionic-native/in-app-browser'
 //import {Http, RequestOptions, ResponseContentType, URLSearchParams} from '@angular/http';
-
-
 
 //import { Paytm } from '@ionic-native/paytm';
 
@@ -39,31 +37,58 @@ export interface PageInterface {
   icon: string;
 }
 
-
 @Component({
-  selector: 'page-menu',
-  templateUrl: 'menu.html',
+  selector: "page-menu",
+  templateUrl: "menu.html",
 })
 export class MenuPage {
-
   // Basic root for our content view
   rootPage = TabsPage;
 
   // Reference to the app's root nav
 
   pages: PageInterface[] = [
-    { title: 'Home', pageName: 'TabsPage', tabComponent: 'CollectionReportPage', index: 0, icon: 'home' },
-    { title: 'Search', pageName: 'TabsPage', tabComponent: 'SearchPage', index: 1, icon: 'contacts' },
-    { title: 'Reports', pageName: 'TabsPage', tabComponent: 'SearchPage', index: 2, icon: 'pie' },
-    { title: 'Messages', pageName: 'TabsPage', tabComponent: 'SearchPage', index: 3, icon: 'mail' }
-
+    {
+      title: "Home",
+      pageName: "TabsPage",
+      tabComponent: "CollectionReportPage",
+      index: 0,
+      icon: "home",
+    },
+    {
+      title: "Search",
+      pageName: "TabsPage",
+      tabComponent: "SearchPage",
+      index: 1,
+      icon: "contacts",
+    },
+    {
+      title: "Reports",
+      pageName: "TabsPage",
+      tabComponent: "SearchPage",
+      index: 2,
+      icon: "pie",
+    },
+    {
+      title: "Messages",
+      pageName: "TabsPage",
+      tabComponent: "SearchPage",
+      index: 3,
+      icon: "mail",
+    },
   ];
 
   subscription: any;
   menuStoreId: any;
-  constructor(public navCtrl: NavController, public storage: Storage,
-    public data: DataProvider, public http: HttpClient,
-    public plt: Platform, private _location: Location, public alertController: AlertController, public router:Router) {
+  constructor(
+    public storage: Storage,
+    public data: DataProvider,
+    public http: HttpClient,
+    public plt: Platform,
+    private _location: Location,
+    public alertController: AlertController,
+    public router: Router
+  ) {
     //public paytm: Paytm,
     //, public iab: InAppBrowser
     // this.subscription =   this.plt.backButton.subscribe(() => {
@@ -91,149 +116,146 @@ export class MenuPage {
     //   }
 
     // });
-    this.menuStoreId = this.data.storeID
-
+    this.menuStoreId = this.data.storeID;
   }
   ionViewDidLeave() {
     //this.subscription.unsubscribe();
   }
-
 
   openPage(page: PageInterface) {
     let params = {};
 
     // The index is equal to the order of our tabs inside tabs.ts
     if (page.index) {
-      console.log("tabIndex: page.index" + page.index)
+      console.log("tabIndex: page.index" + page.index);
       params = { tabIndex: page.index };
     }
-    console.log("page.pageName")
+    console.log("page.pageName");
     // The active child nav is our Tabs Navigation
     this.router.navigate([page.pageName], { queryParams: params });
   }
 
   logoutClass() {
     //console.log("logoutClass-out " )
-    return '';
+    return "";
   }
   logoutIconClass() {
     //console.log("log-out " )
-    return 'log-out';
+    return "log-out";
   }
   goToLoginPage() {
     this.storage.clear();
-    this.router.navigate(['/login']);
+    this.router.navigate(["/login"]);
   }
   goToSettingPage() {
-    this.router.navigate(['/settings']);
+    this.router.navigate(["/settings"]);
   }
   goToHome() {
-    this.router.navigate(['/tabs']);
+    this.router.navigate(["/tabs"]);
   }
   goToJoinChit() {
-    this.router.navigate(['/login']);
+    this.router.navigate(["/joint-chit"]);
   }
   goToMyChits() {
-    this.router.navigate(['/login']);
+    this.router.navigate(["/chit-list"]);
   }
   goToReport() {
-    this.router.navigate(['/login']);
+    this.router.navigate(["/collection-report"]);
   }
   payResponse = "";
 
   gotoPayTest() {
-    this.router.navigate(['/login']);
+    this.router.navigate(["/login"]);
   }
 
   goToGeoLocation() {
-    this.router.navigate(['/login']);
+    this.router.navigate(["/login"]);
   }
 
   gotoPushNote() {
-    this.router.navigate(['/login']);
+    this.router.navigate(["/push-note"]);
   }
 
-
   gototsteasypay() {
-    this.router.navigate(['/login']);
+    this.router.navigate(["/testeasypay"]);
   }
 
   pay_check() {
-    console.log("pay_check called")
+    console.log("pay_check called");
     var options = {
-      description: 'Scheme Payment',
-      image: 'https://kumuduapps.in:8443/logo/21//favicon.png',//'https://i.imgur.com/3g7nmJC.png',
-      currency: 'INR',
-      key: 'rzp_test_yMJKzjz8mTggSd',
-      order_id: 'order_F1yhyhROyAn9UR',
-      amount: '5000',
-      name: 'city Gold',
+      description: "Scheme Payment",
+      image: "https://kumuduapps.in:8443/logo/21//favicon.png", //'https://i.imgur.com/3g7nmJC.png',
+      currency: "INR",
+      key: "rzp_test_yMJKzjz8mTggSd",
+      order_id: "order_F1yhyhROyAn9UR",
+      amount: "5000",
+      name: "city Gold",
       prefill: {
-        email: 'aparna.rajkumar+053@razorpay.com',
-        contact: '8879524924',
-        name: 'Pranav Gupta'
+        email: "aparna.rajkumar+053@razorpay.com",
+        contact: "8879524924",
+        name: "Pranav Gupta",
       },
       theme: {
-        color: '#F37254'
+        color: "#F37254",
       },
       modal: {
         ondismiss: function () {
-          alert('dismissed')
-        }
-      }
+          alert("dismissed");
+        },
+      },
     };
     let endPoint = "https://api.razorpay.com/v1/checkout/embedded";
 
     return new Promise((resolve, reject) => {
-      this.http
-        .post(endPoint, options)
-        .subscribe(
-          res => {
-            try {
-              let data = res;
-              console.log("data :" + res)
-              resolve(data);
-            } catch (e) {
-              console.log(e);
-              console.log("catch :" + res)
-            }
-          },
-          err => {
-            resolve([]);
-            reject(err);
-            console.log("error :" + err)
+      this.http.post(endPoint, options).subscribe(
+        (res) => {
+          try {
+            let data = res;
+            console.log("data :" + res);
+            resolve(data);
+          } catch (e) {
+            console.log(e);
+            console.log("catch :" + res);
           }
-        );
+        },
+        (err) => {
+          resolve([]);
+          reject(err);
+          console.log("error :" + err);
+        }
+      );
     });
-
   }
 
   goToUpdateMember() {
-    this.router.navigate(['/login']);
+    this.router.navigate(["/login"]);
   }
 
   goToSendSmsToMember() {
-    this.router.navigate(['/login']);
+    this.router.navigate(["/login"]);
   }
 
   showExitConfirm() {
     let alert = this.alertController.create({
-      message: 'Do you want to close the app?',
+      message: "Do you want to close the app?",
       //backdropDismiss: false,
-      buttons: [{
-        text: 'Stay',
-        role: 'cancel',
-        handler: () => {
-          console.log('Application exit prevented!');
-        }
-      }, {
-        text: 'Exit',
-        handler: () => {
-          //this.plt.
-        }
-      }]
+      buttons: [
+        {
+          text: "Stay",
+          role: "cancel",
+          handler: () => {
+            console.log("Application exit prevented!");
+          },
+        },
+        {
+          text: "Exit",
+          handler: () => {
+            //this.plt.
+          },
+        },
+      ],
     });
-    alert.then(alert => alert.present());
+    alert.then((alert) => alert.present());
   }
 
   /*
@@ -337,19 +359,18 @@ var browserRef =this.iab.create(
 */
   tt() {
     //let params: any = [];
-    let Myurl = "https://kumuduapps.in:8443/paysuccess.jsp?razorpay_order_id=order_FEK45J4ACE4N0I&razorpay_payment_id=pay_FEK4AGTlYO3Fkb&razorpay_signature=53fb38debe3340c333e1372d7ae069b6f8eaf40363b497f4375beb7338c5c740"
+    let Myurl =
+      "https://kumuduapps.in:8443/paysuccess.jsp?razorpay_order_id=order_FEK45J4ACE4N0I&razorpay_payment_id=pay_FEK4AGTlYO3Fkb&razorpay_signature=53fb38debe3340c333e1372d7ae069b6f8eaf40363b497f4375beb7338c5c740";
     var regex = /[?&]([^=#]+)=([^&#]*)/g,
       url = Myurl,
       params: any = [],
       match;
-    while (match = regex.exec(url)) {
+    while ((match = regex.exec(url))) {
       params[match[1]] = match[2];
     }
     console.log(params);
     console.log(params.razorpay_order_id);
     console.log(params.razorpay_signature);
     console.log(params.razorpay_payment_id);
-
-  };
-
+  }
 }

@@ -1,44 +1,38 @@
-import { Component } from "@angular/core";
-import { NavController, NavParams, Platform } from "@ionic/angular";
-import { PaymentSuccessPage } from "../payment-success/payment-success";
-
-/**
- * Generated class for the SchemePayPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Platform } from "@ionic/angular";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "page-scheme-pay",
   templateUrl: "scheme-pay.html",
 })
-export class SchemePayPage {
-  constructor(
-    public navCtrl: NavController,
-    private plt: Platform,
-    public navParams: NavParams
-  ) {}
+export class SchemePayPage implements OnInit {
+  private subscription: any;
 
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad SchemePayPage");
+  constructor(private router: Router, private plt: Platform) {}
+
+  ngOnInit() {
+    console.log("SchemePayPage initialized");
   }
-  subscription: any;
+
   ionViewDidEnter() {
-    console.log("ionViewDidLoad SchemePayPage");
-    this.subscription = this.plt.backButton.subscribe(() => {
+    console.log("ionViewDidEnter SchemePayPage");
+    this.subscription = this.plt.backButton.subscribeWithPriority(9999, () => {
       console.log("Back press handler!");
       console.log("Show Exit Alert!");
-      let Mypages: any = SchemePayPage;
-      this.navCtrl.pop(Mypages);
+
+      // Navigate to the desired previous route
+      this.router.navigate(["/previous-route"]); // Replace '/previous-route' with your actual route
     });
   }
 
   ionViewDidLeave() {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   goToPaymentSuccessPage() {
-    this.navCtrl.push(PaymentSuccessPage);
+    this.router.navigate(["/payment-success"]);
   }
 }

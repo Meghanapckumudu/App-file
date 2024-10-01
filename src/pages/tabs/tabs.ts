@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams } from "@ionic/angular";
+import { NavParams } from "@ionic/angular";
 import { SearchPage } from "../search/search";
 import { CollectionReportPage } from "../collection-report/collection-report";
 import { SettingsPage } from "../settings/settings";
@@ -37,11 +37,7 @@ export class TabsPage {
   customerSearchRoot: any = CustomerSearchPage;
   loginType = "";
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public data: DataProvider
-  ) {
+  constructor(public navParams: NavParams, public data: DataProvider) {
     this.myIndex = navParams.data.tabIndex || 0;
     console.log("MyIndex : " + this.myIndex);
     console.log(data.userLoginType);

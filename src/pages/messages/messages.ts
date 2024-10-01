@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
+import { Component } from "@angular/core";
+import { NavParams } from "@ionic/angular";
 
 /**
  * Generated class for the MessagesPage page.
@@ -8,18 +8,14 @@ import { NavController, NavParams } from '@ionic/angular';
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-messages',
-  templateUrl: 'messages.html',
+  selector: "page-messages",
+  templateUrl: "messages.html",
 })
 export class MessagesPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MessagesPage');
+    console.log("ionViewDidLoad MessagesPage");
   }
-
 }

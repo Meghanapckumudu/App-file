@@ -26,6 +26,7 @@ import {
   NativeGeocoderReverseResult,
   NativeGeocoderOptions,
 } from "@ionic-native/native-geocoder";
+import { Router } from "@angular/router";
 
 import { DomSanitizer } from "@angular/platform-browser";
 //import { InAppBrowser, InAppBrowserObject } from '@ionic-native/in-app-browser/ngx';
@@ -87,7 +88,7 @@ export class SchemeDetailPage {
   };
 
   constructor(
-    public navCtrl: NavController,
+    private router: Router,
     public navParams: NavParams,
     public http1: HttpClient,
     public alertCtrl: AlertController,
@@ -465,7 +466,8 @@ export class SchemeDetailPage {
       console.log("Back press handler!");
       console.log("Show Exit Alert!");
       let MyPage: any = SchemeDetailPage;
-      this.navCtrl.pop(MyPage);
+      // this.location.back();
+      this.router.navigate(["schema-detail"]);
     });
   }
 
@@ -964,8 +966,8 @@ export class SchemeDetailPage {
                               "-" +
                               this.scheme.member_no +
                               "";
-                            this.navCtrl.push(PaymentSuccessPage, {
-                              voucherNo: displayData,
+                            this.router.navigate(["/payment-success"], {
+                              queryParams: { voucherNo: displayData },
                             });
                           } else {
                             //if voucher number empty then alert msg
@@ -1221,9 +1223,11 @@ export class SchemeDetailPage {
                                       this.apiClient.dismissLoader();
                                       this.data.printMessage =
                                         this.data.paymentSuccessPrintMsg(obj);
-                                      this.navCtrl.push(PaymentSuccessPage, {
-                                        voucherNo: result,
-                                      });
+
+                                      this.router.navigate(
+                                        ["/payment-success"],
+                                        { queryParams: { voucherNo: result } }
+                                      );
                                     } else {
                                       let alert = this.alertCtrl.create({
                                         title: "Save Failed.. Contact Shop..",
@@ -1515,9 +1519,10 @@ export class SchemeDetailPage {
                               "-" +
                               this.scheme.member_no +
                               "";
-                            this.navCtrl.push(PaymentSuccessPage, {
-                              voucherNo: displayData,
-                            });
+                            this.router.navigate([
+                              "/payment-success",
+                              displayData,
+                            ]);
                           } else {
                             //if voucher number empty then alert msg
                             let alert = this.alertCtrl.create({
@@ -1610,7 +1615,9 @@ export class SchemeDetailPage {
               obj["location"] = this.geo_address2;
               this.apiClient.dismissLoader();
               this.data.printMessage = this.data.paymentSuccessPrintMsg(obj);
-              this.navCtrl.push(PaymentSuccessPage, { voucherNo: result });
+              this.router.navigate(["/payment-success"], {
+                queryParams: { voucherNo: result },
+              });
             } else {
               let alert = this.alertCtrl.create({
                 title: "Save Failed.. Contact Shop..",
