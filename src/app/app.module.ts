@@ -61,6 +61,7 @@ import { TesteasypayPage } from '../pages/testeasypay/testeasypay';
 //import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 // import { FileOpener } from '@ionic-native/file-opener/ngx';
  import { DocumentViewer } from '@ionic-native/document-viewer';
+import { AppRoutingModule } from './app-routing.module';
 //import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
 //import { GeocoderProvider } from '../providers/geocoder/geocoder';
 //import {FCM} from '@ionic-native/fcm';
@@ -77,7 +78,8 @@ import { TesteasypayPage } from '../pages/testeasypay/testeasypay';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(), HttpClientModule, IonicStorageModule.forRoot()
+    IonicModule.forRoot(), HttpClientModule, IonicStorageModule.forRoot(),
+    AppRoutingModule
   ],
   bootstrap: [],
   entryComponents: [
